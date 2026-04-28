@@ -1,0 +1,721 @@
+Student ID,Student Name,Gender,Term,Class,Subject,CA Score,CA Total Score,Classes Held,Classes Attended,Behavioral Rating
+STU_0001,Student 0001,Male,2026_T1,JSS2,Physics,31.5,40,32,21,Good
+STU_0001,Student 0001,Male,2026_T1,JSS2,Mathematics,32.5,40,28,18,Good
+STU_0001,Student 0001,Male,2026_T1,JSS2,Biology,29.5,40,30,19,Good
+STU_0001,Student 0001,Male,2026_T1,JSS2,Computer Science,28.6,40,34,22,Good
+STU_0001,Student 0001,Male,2026_T1,JSS2,English Language,31.6,40,35,23,Good
+STU_0001,Student 0001,Male,2026_T1,JSS2,Literature,30.8,40,35,23,Good
+STU_0002,Student 0002,Male,2026_T1,SS2,Economics,32.2,40,25,16,Good
+STU_0002,Student 0002,Male,2026_T1,SS2,Computer Science,30.8,40,25,16,Good
+STU_0002,Student 0002,Male,2026_T1,SS2,Biology,31.4,40,30,20,Good
+STU_0002,Student 0002,Male,2026_T1,SS2,Mathematics,27.7,40,28,18,Good
+STU_0002,Student 0002,Male,2026_T1,SS2,Further Mathematics,34.7,40,32,21,Good
+STU_0002,Student 0002,Male,2026_T1,SS2,Literature,30.6,40,30,20,Good
+STU_0003,Student 0003,Female,2026_T1,SS2,Biology,40.0,40,34,33,Excellent
+STU_0003,Student 0003,Female,2026_T1,SS2,Economics,37.0,40,27,26,Excellent
+STU_0003,Student 0003,Female,2026_T1,SS2,Geography,39.3,40,29,28,Excellent
+STU_0003,Student 0003,Female,2026_T1,SS2,English Language,36.0,40,27,26,Excellent
+STU_0003,Student 0003,Female,2026_T1,SS2,Computer Science,39.6,40,33,32,Excellent
+STU_0003,Student 0003,Female,2026_T1,SS2,Mathematics,37.9,40,32,31,Excellent
+STU_0004,Student 0004,Male,2026_T1,JSS1,Geography,38.1,40,31,21,Good
+STU_0004,Student 0004,Male,2026_T1,JSS1,Mathematics,39.4,40,29,19,Good
+STU_0004,Student 0004,Male,2026_T1,JSS1,Physics,35.6,40,29,19,Good
+STU_0004,Student 0004,Male,2026_T1,JSS1,Chemistry,36.7,40,34,23,Good
+STU_0004,Student 0004,Male,2026_T1,JSS1,Literature,39.0,40,29,19,Good
+STU_0004,Student 0004,Male,2026_T1,JSS1,Computer Science,40.0,40,33,22,Good
+STU_0005,Student 0005,Male,2026_T1,SS2,Literature,38.2,40,27,18,Good
+STU_0005,Student 0005,Male,2026_T1,SS2,Mathematics,39.7,40,25,17,Good
+STU_0005,Student 0005,Male,2026_T1,SS2,Chemistry,38.3,40,32,22,Good
+STU_0005,Student 0005,Male,2026_T1,SS2,English Language,40.0,40,29,19,Good
+STU_0005,Student 0005,Male,2026_T1,SS2,Further Mathematics,35.0,40,27,18,Good
+STU_0005,Student 0005,Male,2026_T1,SS2,Economics,38.7,40,32,22,Good
+STU_0006,Student 0006,Male,2026_T1,JSS3,Literature,34.4,40,26,26,Average
+STU_0006,Student 0006,Male,2026_T1,JSS3,Computer Science,32.6,40,30,30,Average
+STU_0006,Student 0006,Male,2026_T1,JSS3,English Language,38.2,40,26,26,Average
+STU_0006,Student 0006,Male,2026_T1,JSS3,Economics,37.9,40,28,28,Average
+STU_0006,Student 0006,Male,2026_T1,JSS3,Geography,37.0,40,29,29,Average
+STU_0006,Student 0006,Male,2026_T1,JSS3,Further Mathematics,37.4,40,27,27,Average
+STU_0007,Student 0007,Male,2026_T1,SS1,Mathematics,40.0,40,32,29,Excellent
+STU_0007,Student 0007,Male,2026_T1,SS1,Further Mathematics,37.3,40,35,31,Excellent
+STU_0007,Student 0007,Male,2026_T1,SS1,Physics,38.9,40,26,23,Excellent
+STU_0007,Student 0007,Male,2026_T1,SS1,Chemistry,36.5,40,30,27,Excellent
+STU_0007,Student 0007,Male,2026_T1,SS1,Computer Science,38.4,40,25,22,Excellent
+STU_0007,Student 0007,Male,2026_T1,SS1,English Language,37.4,40,29,26,Excellent
+STU_0008,Student 0008,Male,2026_T1,JSS1,Mathematics,36.6,40,32,22,Excellent
+STU_0008,Student 0008,Male,2026_T1,JSS1,English Language,40.0,40,35,24,Excellent
+STU_0008,Student 0008,Male,2026_T1,JSS1,Literature,39.7,40,29,20,Excellent
+STU_0008,Student 0008,Male,2026_T1,JSS1,Economics,37.7,40,34,23,Excellent
+STU_0008,Student 0008,Male,2026_T1,JSS1,Geography,32.8,40,35,24,Excellent
+STU_0008,Student 0008,Male,2026_T1,JSS1,Chemistry,36.7,40,25,17,Excellent
+STU_0009,Student 0009,Female,2026_T1,JSS1,Computer Science,32.8,40,30,26,Good
+STU_0009,Student 0009,Female,2026_T1,JSS1,Physics,26.9,40,25,21,Good
+STU_0009,Student 0009,Female,2026_T1,JSS1,Chemistry,29.6,40,26,22,Good
+STU_0009,Student 0009,Female,2026_T1,JSS1,Economics,30.3,40,33,28,Good
+STU_0009,Student 0009,Female,2026_T1,JSS1,Mathematics,27.8,40,34,29,Good
+STU_0009,Student 0009,Female,2026_T1,JSS1,Further Mathematics,25.7,40,31,27,Good
+STU_0010,Student 0010,Male,2026_T1,JSS3,Economics,14.2,40,31,16,Average
+STU_0010,Student 0010,Male,2026_T1,JSS3,Biology,20.5,40,29,15,Average
+STU_0010,Student 0010,Male,2026_T1,JSS3,Physics,17.5,40,35,18,Average
+STU_0010,Student 0010,Male,2026_T1,JSS3,Mathematics,19.5,40,34,17,Average
+STU_0010,Student 0010,Male,2026_T1,JSS3,Literature,16.6,40,27,14,Average
+STU_0010,Student 0010,Male,2026_T1,JSS3,Chemistry,18.6,40,30,15,Average
+STU_0011,Student 0011,Male,2026_T1,JSS3,Computer Science,36.1,40,34,26,Good
+STU_0011,Student 0011,Male,2026_T1,JSS3,Economics,36.5,40,27,21,Good
+STU_0011,Student 0011,Male,2026_T1,JSS3,English Language,33.8,40,31,24,Good
+STU_0011,Student 0011,Male,2026_T1,JSS3,Further Mathematics,38.4,40,35,27,Good
+STU_0011,Student 0011,Male,2026_T1,JSS3,Chemistry,34.8,40,31,24,Good
+STU_0011,Student 0011,Male,2026_T1,JSS3,Physics,32.6,40,26,20,Good
+STU_0012,Student 0012,Male,2026_T1,JSS2,Further Mathematics,23.5,40,26,14,Poor
+STU_0012,Student 0012,Male,2026_T1,JSS2,Computer Science,23.7,40,32,18,Poor
+STU_0012,Student 0012,Male,2026_T1,JSS2,English Language,24.0,40,29,16,Poor
+STU_0012,Student 0012,Male,2026_T1,JSS2,Physics,26.4,40,27,15,Poor
+STU_0012,Student 0012,Male,2026_T1,JSS2,Chemistry,23.2,40,27,15,Poor
+STU_0012,Student 0012,Male,2026_T1,JSS2,Geography,23.4,40,35,20,Poor
+STU_0013,Student 0013,Male,2026_T1,JSS1,Further Mathematics,34.6,40,35,28,Good
+STU_0013,Student 0013,Male,2026_T1,JSS1,English Language,38.5,40,34,27,Good
+STU_0013,Student 0013,Male,2026_T1,JSS1,Economics,37.2,40,29,23,Good
+STU_0013,Student 0013,Male,2026_T1,JSS1,Chemistry,36.0,40,30,24,Good
+STU_0013,Student 0013,Male,2026_T1,JSS1,Mathematics,33.0,40,29,23,Good
+STU_0013,Student 0013,Male,2026_T1,JSS1,Literature,39.7,40,34,27,Good
+STU_0014,Student 0014,Male,2026_T1,JSS2,English Language,20.7,40,35,13,Average
+STU_0014,Student 0014,Male,2026_T1,JSS2,Economics,21.9,40,32,12,Average
+STU_0014,Student 0014,Male,2026_T1,JSS2,Biology,23.8,40,34,13,Average
+STU_0014,Student 0014,Male,2026_T1,JSS2,Physics,20.7,40,29,11,Average
+STU_0014,Student 0014,Male,2026_T1,JSS2,Literature,20.1,40,30,11,Average
+STU_0014,Student 0014,Male,2026_T1,JSS2,Chemistry,18.9,40,27,10,Average
+STU_0015,Student 0015,Male,2026_T1,SS2,Mathematics,22.8,40,32,20,Average
+STU_0015,Student 0015,Male,2026_T1,SS2,Economics,20.2,40,31,19,Average
+STU_0015,Student 0015,Male,2026_T1,SS2,English Language,27.2,40,35,22,Average
+STU_0015,Student 0015,Male,2026_T1,SS2,Computer Science,19.3,40,34,21,Average
+STU_0015,Student 0015,Male,2026_T1,SS2,Literature,19.5,40,32,20,Average
+STU_0015,Student 0015,Male,2026_T1,SS2,Chemistry,20.2,40,29,18,Average
+STU_0016,Student 0016,Male,2026_T1,JSS1,English Language,40.0,40,25,19,Excellent
+STU_0016,Student 0016,Male,2026_T1,JSS1,Physics,39.6,40,28,22,Excellent
+STU_0016,Student 0016,Male,2026_T1,JSS1,Further Mathematics,40.0,40,25,19,Excellent
+STU_0016,Student 0016,Male,2026_T1,JSS1,Mathematics,38.6,40,28,22,Excellent
+STU_0016,Student 0016,Male,2026_T1,JSS1,Computer Science,37.8,40,32,25,Excellent
+STU_0016,Student 0016,Male,2026_T1,JSS1,Economics,36.9,40,35,27,Excellent
+STU_0017,Student 0017,Female,2026_T1,JSS1,Mathematics,14.5,40,32,22,Excellent
+STU_0017,Student 0017,Female,2026_T1,JSS1,English Language,17.9,40,32,22,Excellent
+STU_0017,Student 0017,Female,2026_T1,JSS1,Physics,18.3,40,25,17,Excellent
+STU_0017,Student 0017,Female,2026_T1,JSS1,Further Mathematics,17.6,40,32,22,Excellent
+STU_0017,Student 0017,Female,2026_T1,JSS1,Geography,21.4,40,34,23,Excellent
+STU_0017,Student 0017,Female,2026_T1,JSS1,Chemistry,21.4,40,28,19,Excellent
+STU_0018,Student 0018,Male,2026_T1,SS3,Economics,24.3,40,33,19,Poor
+STU_0018,Student 0018,Male,2026_T1,SS3,Computer Science,21.4,40,29,17,Poor
+STU_0018,Student 0018,Male,2026_T1,SS3,Literature,23.8,40,25,14,Poor
+STU_0018,Student 0018,Male,2026_T1,SS3,Geography,23.8,40,32,18,Poor
+STU_0018,Student 0018,Male,2026_T1,SS3,Biology,23.7,40,31,18,Poor
+STU_0018,Student 0018,Male,2026_T1,SS3,Further Mathematics,23.6,40,32,18,Poor
+STU_0019,Student 0019,Female,2026_T1,SS1,Further Mathematics,32.3,40,26,22,Good
+STU_0019,Student 0019,Female,2026_T1,SS1,English Language,32.9,40,32,27,Good
+STU_0019,Student 0019,Female,2026_T1,SS1,Biology,32.4,40,34,29,Good
+STU_0019,Student 0019,Female,2026_T1,SS1,Geography,34.1,40,35,30,Good
+STU_0019,Student 0019,Female,2026_T1,SS1,Chemistry,34.4,40,30,25,Good
+STU_0019,Student 0019,Female,2026_T1,SS1,Economics,31.8,40,32,27,Good
+STU_0020,Student 0020,Female,2026_T1,JSS1,Computer Science,30.6,40,31,22,Average
+STU_0020,Student 0020,Female,2026_T1,JSS1,Geography,26.1,40,35,25,Average
+STU_0020,Student 0020,Female,2026_T1,JSS1,Literature,24.8,40,35,25,Average
+STU_0020,Student 0020,Female,2026_T1,JSS1,English Language,28.8,40,30,21,Average
+STU_0020,Student 0020,Female,2026_T1,JSS1,Physics,26.4,40,32,23,Average
+STU_0020,Student 0020,Female,2026_T1,JSS1,Chemistry,28.7,40,27,19,Average
+STU_0021,Student 0021,Male,2026_T1,SS2,Literature,25.9,40,28,23,Excellent
+STU_0021,Student 0021,Male,2026_T1,SS2,English Language,33.5,40,33,27,Excellent
+STU_0021,Student 0021,Male,2026_T1,SS2,Economics,32.1,40,25,20,Excellent
+STU_0021,Student 0021,Male,2026_T1,SS2,Chemistry,27.7,40,25,20,Excellent
+STU_0021,Student 0021,Male,2026_T1,SS2,Physics,27.8,40,30,24,Excellent
+STU_0021,Student 0021,Male,2026_T1,SS2,Further Mathematics,34.1,40,29,23,Excellent
+STU_0022,Student 0022,Male,2026_T1,JSS2,Computer Science,25.3,40,29,24,Excellent
+STU_0022,Student 0022,Male,2026_T1,JSS2,Chemistry,25.1,40,30,24,Excellent
+STU_0022,Student 0022,Male,2026_T1,JSS2,English Language,22.2,40,30,24,Excellent
+STU_0022,Student 0022,Male,2026_T1,JSS2,Biology,26.1,40,25,20,Excellent
+STU_0022,Student 0022,Male,2026_T1,JSS2,Literature,26.3,40,33,27,Excellent
+STU_0022,Student 0022,Male,2026_T1,JSS2,Further Mathematics,28.2,40,29,24,Excellent
+STU_0023,Student 0023,Female,2026_T1,JSS2,Literature,34.8,40,26,24,Excellent
+STU_0023,Student 0023,Female,2026_T1,JSS2,Computer Science,34.5,40,33,31,Excellent
+STU_0023,Student 0023,Female,2026_T1,JSS2,English Language,38.5,40,25,23,Excellent
+STU_0023,Student 0023,Female,2026_T1,JSS2,Mathematics,39.6,40,33,31,Excellent
+STU_0023,Student 0023,Female,2026_T1,JSS2,Biology,34.4,40,26,24,Excellent
+STU_0023,Student 0023,Female,2026_T1,JSS2,Geography,39.7,40,27,25,Excellent
+STU_0024,Student 0024,Female,2026_T1,SS3,Literature,38.2,40,27,25,Average
+STU_0024,Student 0024,Female,2026_T1,SS3,English Language,40.0,40,26,24,Average
+STU_0024,Student 0024,Female,2026_T1,SS3,Physics,37.9,40,28,26,Average
+STU_0024,Student 0024,Female,2026_T1,SS3,Geography,33.0,40,32,30,Average
+STU_0024,Student 0024,Female,2026_T1,SS3,Computer Science,37.8,40,31,29,Average
+STU_0024,Student 0024,Female,2026_T1,SS3,Economics,40.0,40,25,23,Average
+STU_0025,Student 0025,Female,2026_T1,SS1,Geography,25.1,40,28,13,Poor
+STU_0025,Student 0025,Female,2026_T1,SS1,Chemistry,26.1,40,27,13,Poor
+STU_0025,Student 0025,Female,2026_T1,SS1,Physics,26.5,40,31,14,Poor
+STU_0025,Student 0025,Female,2026_T1,SS1,Economics,21.0,40,31,14,Poor
+STU_0025,Student 0025,Female,2026_T1,SS1,Biology,30.2,40,31,14,Poor
+STU_0025,Student 0025,Female,2026_T1,SS1,Further Mathematics,25.0,40,32,15,Poor
+STU_0026,Student 0026,Male,2026_T1,SS2,Further Mathematics,33.8,40,27,24,Average
+STU_0026,Student 0026,Male,2026_T1,SS2,English Language,32.6,40,31,27,Average
+STU_0026,Student 0026,Male,2026_T1,SS2,Computer Science,35.3,40,25,22,Average
+STU_0026,Student 0026,Male,2026_T1,SS2,Physics,33.6,40,31,27,Average
+STU_0026,Student 0026,Male,2026_T1,SS2,Economics,32.3,40,25,22,Average
+STU_0026,Student 0026,Male,2026_T1,SS2,Chemistry,31.0,40,35,31,Average
+STU_0027,Student 0027,Male,2026_T1,JSS2,Biology,34.0,40,29,25,Excellent
+STU_0027,Student 0027,Male,2026_T1,JSS2,Economics,28.6,40,30,26,Excellent
+STU_0027,Student 0027,Male,2026_T1,JSS2,Further Mathematics,33.7,40,30,26,Excellent
+STU_0027,Student 0027,Male,2026_T1,JSS2,Geography,30.2,40,25,21,Excellent
+STU_0027,Student 0027,Male,2026_T1,JSS2,Literature,34.9,40,29,25,Excellent
+STU_0027,Student 0027,Male,2026_T1,JSS2,Computer Science,32.7,40,33,28,Excellent
+STU_0028,Student 0028,Female,2026_T1,JSS3,Literature,29.0,40,26,20,Excellent
+STU_0028,Student 0028,Female,2026_T1,JSS3,Geography,27.9,40,25,19,Excellent
+STU_0028,Student 0028,Female,2026_T1,JSS3,Economics,24.2,40,33,25,Excellent
+STU_0028,Student 0028,Female,2026_T1,JSS3,Computer Science,26.0,40,30,23,Excellent
+STU_0028,Student 0028,Female,2026_T1,JSS3,English Language,29.0,40,31,24,Excellent
+STU_0028,Student 0028,Female,2026_T1,JSS3,Physics,28.0,40,27,21,Excellent
+STU_0029,Student 0029,Male,2026_T1,SS2,Physics,36.1,40,29,20,Excellent
+STU_0029,Student 0029,Male,2026_T1,SS2,Mathematics,34.5,40,28,20,Excellent
+STU_0029,Student 0029,Male,2026_T1,SS2,Further Mathematics,31.8,40,29,20,Excellent
+STU_0029,Student 0029,Male,2026_T1,SS2,Economics,32.1,40,31,22,Excellent
+STU_0029,Student 0029,Male,2026_T1,SS2,Biology,33.9,40,33,23,Excellent
+STU_0029,Student 0029,Male,2026_T1,SS2,Geography,29.1,40,26,18,Excellent
+STU_0030,Student 0030,Male,2026_T1,SS2,English Language,38.9,40,32,20,Excellent
+STU_0030,Student 0030,Male,2026_T1,SS2,Literature,36.4,40,30,19,Excellent
+STU_0030,Student 0030,Male,2026_T1,SS2,Biology,38.0,40,28,18,Excellent
+STU_0030,Student 0030,Male,2026_T1,SS2,Further Mathematics,32.4,40,34,22,Excellent
+STU_0030,Student 0030,Male,2026_T1,SS2,Geography,38.0,40,34,22,Excellent
+STU_0030,Student 0030,Male,2026_T1,SS2,Mathematics,40.0,40,35,22,Excellent
+STU_0031,Student 0031,Female,2026_T1,SS1,Physics,32.5,40,34,26,Good
+STU_0031,Student 0031,Female,2026_T1,SS1,Economics,36.7,40,28,21,Good
+STU_0031,Student 0031,Female,2026_T1,SS1,Chemistry,35.2,40,30,22,Good
+STU_0031,Student 0031,Female,2026_T1,SS1,Mathematics,32.1,40,32,24,Good
+STU_0031,Student 0031,Female,2026_T1,SS1,Computer Science,36.1,40,26,19,Good
+STU_0031,Student 0031,Female,2026_T1,SS1,Biology,36.8,40,27,20,Good
+STU_0032,Student 0032,Male,2026_T1,JSS2,English Language,34.6,40,31,19,Average
+STU_0032,Student 0032,Male,2026_T1,JSS2,Geography,38.2,40,29,17,Average
+STU_0032,Student 0032,Male,2026_T1,JSS2,Economics,32.5,40,34,20,Average
+STU_0032,Student 0032,Male,2026_T1,JSS2,Biology,32.8,40,32,19,Average
+STU_0032,Student 0032,Male,2026_T1,JSS2,Literature,36.1,40,35,21,Average
+STU_0032,Student 0032,Male,2026_T1,JSS2,Further Mathematics,35.9,40,31,19,Average
+STU_0033,Student 0033,Female,2026_T1,SS2,Literature,36.3,40,26,25,Average
+STU_0033,Student 0033,Female,2026_T1,SS2,Computer Science,39.3,40,28,27,Average
+STU_0033,Student 0033,Female,2026_T1,SS2,Physics,38.8,40,32,31,Average
+STU_0033,Student 0033,Female,2026_T1,SS2,Geography,39.4,40,32,31,Average
+STU_0033,Student 0033,Female,2026_T1,SS2,Biology,37.5,40,25,24,Average
+STU_0033,Student 0033,Female,2026_T1,SS2,Economics,38.9,40,27,26,Average
+STU_0034,Student 0034,Female,2026_T1,SS3,Biology,32.9,40,30,26,Excellent
+STU_0034,Student 0034,Female,2026_T1,SS3,Mathematics,37.9,40,29,25,Excellent
+STU_0034,Student 0034,Female,2026_T1,SS3,Physics,32.2,40,29,25,Excellent
+STU_0034,Student 0034,Female,2026_T1,SS3,Further Mathematics,38.0,40,32,27,Excellent
+STU_0034,Student 0034,Female,2026_T1,SS3,Literature,33.9,40,25,21,Excellent
+STU_0034,Student 0034,Female,2026_T1,SS3,Geography,31.1,40,27,23,Excellent
+STU_0035,Student 0035,Female,2026_T1,SS3,Literature,31.3,40,25,9,Average
+STU_0035,Student 0035,Female,2026_T1,SS3,Mathematics,28.8,40,31,11,Average
+STU_0035,Student 0035,Female,2026_T1,SS3,English Language,30.3,40,32,11,Average
+STU_0035,Student 0035,Female,2026_T1,SS3,Biology,31.0,40,34,12,Average
+STU_0035,Student 0035,Female,2026_T1,SS3,Physics,29.3,40,29,10,Average
+STU_0035,Student 0035,Female,2026_T1,SS3,Further Mathematics,27.4,40,34,12,Average
+STU_0036,Student 0036,Male,2026_T1,JSS2,Literature,35.3,40,26,18,Excellent
+STU_0036,Student 0036,Male,2026_T1,JSS2,Computer Science,33.4,40,34,23,Excellent
+STU_0036,Student 0036,Male,2026_T1,JSS2,Physics,34.8,40,35,24,Excellent
+STU_0036,Student 0036,Male,2026_T1,JSS2,Economics,29.1,40,34,23,Excellent
+STU_0036,Student 0036,Male,2026_T1,JSS2,Geography,34.3,40,31,21,Excellent
+STU_0036,Student 0036,Male,2026_T1,JSS2,Further Mathematics,32.1,40,31,21,Excellent
+STU_0037,Student 0037,Female,2026_T1,SS3,Mathematics,28.3,40,28,16,Average
+STU_0037,Student 0037,Female,2026_T1,SS3,Biology,26.2,40,34,19,Average
+STU_0037,Student 0037,Female,2026_T1,SS3,English Language,25.4,40,33,19,Average
+STU_0037,Student 0037,Female,2026_T1,SS3,Geography,25.9,40,34,19,Average
+STU_0037,Student 0037,Female,2026_T1,SS3,Further Mathematics,23.0,40,25,14,Average
+STU_0037,Student 0037,Female,2026_T1,SS3,Computer Science,28.2,40,34,19,Average
+STU_0038,Student 0038,Male,2026_T1,JSS3,Mathematics,37.2,40,32,27,Average
+STU_0038,Student 0038,Male,2026_T1,JSS3,Biology,34.0,40,26,22,Average
+STU_0038,Student 0038,Male,2026_T1,JSS3,Chemistry,36.4,40,33,28,Average
+STU_0038,Student 0038,Male,2026_T1,JSS3,English Language,32.1,40,34,29,Average
+STU_0038,Student 0038,Male,2026_T1,JSS3,Geography,31.6,40,30,26,Average
+STU_0038,Student 0038,Male,2026_T1,JSS3,Further Mathematics,33.3,40,31,26,Average
+STU_0039,Student 0039,Female,2026_T1,SS1,Geography,33.4,40,33,30,Good
+STU_0039,Student 0039,Female,2026_T1,SS1,Economics,31.7,40,27,24,Good
+STU_0039,Student 0039,Female,2026_T1,SS1,Biology,33.6,40,29,26,Good
+STU_0039,Student 0039,Female,2026_T1,SS1,Mathematics,33.1,40,27,24,Good
+STU_0039,Student 0039,Female,2026_T1,SS1,Further Mathematics,30.5,40,27,24,Good
+STU_0039,Student 0039,Female,2026_T1,SS1,Computer Science,33.6,40,29,26,Good
+STU_0040,Student 0040,Male,2026_T1,SS3,Mathematics,29.3,40,27,25,Excellent
+STU_0040,Student 0040,Male,2026_T1,SS3,Computer Science,27.9,40,31,29,Excellent
+STU_0040,Student 0040,Male,2026_T1,SS3,Biology,29.9,40,30,28,Excellent
+STU_0040,Student 0040,Male,2026_T1,SS3,Chemistry,25.1,40,29,27,Excellent
+STU_0040,Student 0040,Male,2026_T1,SS3,Further Mathematics,28.5,40,31,29,Excellent
+STU_0040,Student 0040,Male,2026_T1,SS3,Physics,25.2,40,26,24,Excellent
+STU_0041,Student 0041,Female,2026_T1,SS3,English Language,19.1,40,31,19,Poor
+STU_0041,Student 0041,Female,2026_T1,SS3,Biology,20.1,40,26,16,Poor
+STU_0041,Student 0041,Female,2026_T1,SS3,Mathematics,19.4,40,32,19,Poor
+STU_0041,Student 0041,Female,2026_T1,SS3,Physics,20.2,40,25,15,Poor
+STU_0041,Student 0041,Female,2026_T1,SS3,Chemistry,20.9,40,31,19,Poor
+STU_0041,Student 0041,Female,2026_T1,SS3,Further Mathematics,23.0,40,35,21,Poor
+STU_0042,Student 0042,Female,2026_T1,JSS3,Biology,28.2,40,28,13,Poor
+STU_0042,Student 0042,Female,2026_T1,JSS3,Economics,25.7,40,27,13,Poor
+STU_0042,Student 0042,Female,2026_T1,JSS3,Literature,31.2,40,30,14,Poor
+STU_0042,Student 0042,Female,2026_T1,JSS3,Mathematics,27.2,40,33,16,Poor
+STU_0042,Student 0042,Female,2026_T1,JSS3,Geography,28.8,40,27,13,Poor
+STU_0042,Student 0042,Female,2026_T1,JSS3,Computer Science,29.8,40,28,13,Poor
+STU_0043,Student 0043,Male,2026_T1,SS1,Computer Science,29.9,40,29,28,Good
+STU_0043,Student 0043,Male,2026_T1,SS1,Biology,31.7,40,34,33,Good
+STU_0043,Student 0043,Male,2026_T1,SS1,Physics,30.4,40,29,28,Good
+STU_0043,Student 0043,Male,2026_T1,SS1,Mathematics,27.8,40,35,34,Good
+STU_0043,Student 0043,Male,2026_T1,SS1,Economics,33.8,40,31,30,Good
+STU_0043,Student 0043,Male,2026_T1,SS1,Chemistry,29.9,40,30,29,Good
+STU_0044,Student 0044,Male,2026_T1,SS2,Biology,27.1,40,33,31,Good
+STU_0044,Student 0044,Male,2026_T1,SS2,English Language,29.3,40,29,27,Good
+STU_0044,Student 0044,Male,2026_T1,SS2,Economics,27.9,40,31,29,Good
+STU_0044,Student 0044,Male,2026_T1,SS2,Geography,28.2,40,28,26,Good
+STU_0044,Student 0044,Male,2026_T1,SS2,Mathematics,32.4,40,34,31,Good
+STU_0044,Student 0044,Male,2026_T1,SS2,Further Mathematics,26.9,40,33,31,Good
+STU_0045,Student 0045,Male,2026_T1,SS1,Biology,31.4,40,34,31,Good
+STU_0045,Student 0045,Male,2026_T1,SS1,Chemistry,32.2,40,30,27,Good
+STU_0045,Student 0045,Male,2026_T1,SS1,Geography,34.1,40,25,23,Good
+STU_0045,Student 0045,Male,2026_T1,SS1,Physics,29.0,40,27,25,Good
+STU_0045,Student 0045,Male,2026_T1,SS1,English Language,28.1,40,35,32,Good
+STU_0045,Student 0045,Male,2026_T1,SS1,Further Mathematics,30.8,40,25,23,Good
+STU_0046,Student 0046,Male,2026_T1,JSS1,Economics,24.3,40,33,23,Average
+STU_0046,Student 0046,Male,2026_T1,JSS1,Further Mathematics,26.7,40,25,17,Average
+STU_0046,Student 0046,Male,2026_T1,JSS1,English Language,28.5,40,35,25,Average
+STU_0046,Student 0046,Male,2026_T1,JSS1,Computer Science,25.7,40,32,22,Average
+STU_0046,Student 0046,Male,2026_T1,JSS1,Geography,24.7,40,35,25,Average
+STU_0046,Student 0046,Male,2026_T1,JSS1,Mathematics,27.7,40,26,18,Average
+STU_0047,Student 0047,Female,2026_T1,JSS2,Mathematics,37.2,40,25,23,Good
+STU_0047,Student 0047,Female,2026_T1,JSS2,English Language,32.1,40,28,26,Good
+STU_0047,Student 0047,Female,2026_T1,JSS2,Literature,37.1,40,25,23,Good
+STU_0047,Student 0047,Female,2026_T1,JSS2,Physics,37.1,40,29,27,Good
+STU_0047,Student 0047,Female,2026_T1,JSS2,Further Mathematics,37.4,40,35,33,Good
+STU_0047,Student 0047,Female,2026_T1,JSS2,Chemistry,37.9,40,30,28,Good
+STU_0048,Student 0048,Male,2026_T1,JSS2,Biology,32.2,40,26,15,Poor
+STU_0048,Student 0048,Male,2026_T1,JSS2,Literature,27.1,40,29,17,Poor
+STU_0048,Student 0048,Male,2026_T1,JSS2,Chemistry,28.1,40,34,19,Poor
+STU_0048,Student 0048,Male,2026_T1,JSS2,Mathematics,27.0,40,33,19,Poor
+STU_0048,Student 0048,Male,2026_T1,JSS2,English Language,27.8,40,32,18,Poor
+STU_0048,Student 0048,Male,2026_T1,JSS2,Further Mathematics,30.9,40,27,15,Poor
+STU_0049,Student 0049,Male,2026_T1,JSS1,English Language,32.5,40,29,22,Excellent
+STU_0049,Student 0049,Male,2026_T1,JSS1,Physics,33.5,40,28,21,Excellent
+STU_0049,Student 0049,Male,2026_T1,JSS1,Biology,38.0,40,35,26,Excellent
+STU_0049,Student 0049,Male,2026_T1,JSS1,Literature,37.3,40,25,19,Excellent
+STU_0049,Student 0049,Male,2026_T1,JSS1,Computer Science,34.5,40,35,26,Excellent
+STU_0049,Student 0049,Male,2026_T1,JSS1,Economics,36.9,40,33,25,Excellent
+STU_0050,Student 0050,Male,2026_T1,JSS3,Mathematics,38.1,40,26,24,Average
+STU_0050,Student 0050,Male,2026_T1,JSS3,Geography,40.0,40,35,32,Average
+STU_0050,Student 0050,Male,2026_T1,JSS3,Economics,37.6,40,33,30,Average
+STU_0050,Student 0050,Male,2026_T1,JSS3,Literature,39.5,40,32,29,Average
+STU_0050,Student 0050,Male,2026_T1,JSS3,Chemistry,40.0,40,32,29,Average
+STU_0050,Student 0050,Male,2026_T1,JSS3,Physics,38.6,40,30,28,Average
+STU_0051,Student 0051,Female,2026_T1,JSS1,Mathematics,27.2,40,25,21,Average
+STU_0051,Student 0051,Female,2026_T1,JSS1,Economics,28.5,40,28,23,Average
+STU_0051,Student 0051,Female,2026_T1,JSS1,Chemistry,26.4,40,31,26,Average
+STU_0051,Student 0051,Female,2026_T1,JSS1,Physics,31.9,40,26,22,Average
+STU_0051,Student 0051,Female,2026_T1,JSS1,Computer Science,27.5,40,28,23,Average
+STU_0051,Student 0051,Female,2026_T1,JSS1,Biology,26.6,40,28,23,Average
+STU_0052,Student 0052,Female,2026_T1,SS2,Biology,17.8,40,25,14,Good
+STU_0052,Student 0052,Female,2026_T1,SS2,Chemistry,21.7,40,30,17,Good
+STU_0052,Student 0052,Female,2026_T1,SS2,English Language,21.3,40,33,19,Good
+STU_0052,Student 0052,Female,2026_T1,SS2,Further Mathematics,18.5,40,28,16,Good
+STU_0052,Student 0052,Female,2026_T1,SS2,Literature,20.7,40,26,14,Good
+STU_0052,Student 0052,Female,2026_T1,SS2,Physics,16.5,40,34,19,Good
+STU_0053,Student 0053,Female,2026_T1,SS2,Economics,33.8,40,32,29,Excellent
+STU_0053,Student 0053,Female,2026_T1,SS2,Geography,34.3,40,25,22,Excellent
+STU_0053,Student 0053,Female,2026_T1,SS2,English Language,36.8,40,29,26,Excellent
+STU_0053,Student 0053,Female,2026_T1,SS2,Computer Science,31.8,40,34,31,Excellent
+STU_0053,Student 0053,Female,2026_T1,SS2,Literature,30.8,40,35,31,Excellent
+STU_0053,Student 0053,Female,2026_T1,SS2,Mathematics,31.6,40,31,28,Excellent
+STU_0054,Student 0054,Female,2026_T1,JSS2,Economics,26.9,40,31,17,Average
+STU_0054,Student 0054,Female,2026_T1,JSS2,Chemistry,32.3,40,34,18,Average
+STU_0054,Student 0054,Female,2026_T1,JSS2,Mathematics,32.7,40,34,18,Average
+STU_0054,Student 0054,Female,2026_T1,JSS2,Further Mathematics,30.2,40,26,14,Average
+STU_0054,Student 0054,Female,2026_T1,JSS2,Computer Science,32.0,40,30,16,Average
+STU_0054,Student 0054,Female,2026_T1,JSS2,Geography,29.9,40,35,19,Average
+STU_0055,Student 0055,Male,2026_T1,SS2,Computer Science,36.2,40,30,21,Poor
+STU_0055,Student 0055,Male,2026_T1,SS2,Chemistry,35.7,40,31,22,Poor
+STU_0055,Student 0055,Male,2026_T1,SS2,Physics,35.7,40,32,23,Poor
+STU_0055,Student 0055,Male,2026_T1,SS2,Geography,33.3,40,34,24,Poor
+STU_0055,Student 0055,Male,2026_T1,SS2,Biology,36.9,40,32,23,Poor
+STU_0055,Student 0055,Male,2026_T1,SS2,Literature,36.3,40,27,19,Poor
+STU_0056,Student 0056,Female,2026_T1,JSS2,Geography,31.2,40,34,14,Average
+STU_0056,Student 0056,Female,2026_T1,JSS2,Biology,29.9,40,30,12,Average
+STU_0056,Student 0056,Female,2026_T1,JSS2,Physics,29.3,40,29,12,Average
+STU_0056,Student 0056,Female,2026_T1,JSS2,English Language,27.9,40,30,12,Average
+STU_0056,Student 0056,Female,2026_T1,JSS2,Chemistry,29.8,40,25,10,Average
+STU_0056,Student 0056,Female,2026_T1,JSS2,Literature,31.1,40,33,13,Average
+STU_0057,Student 0057,Female,2026_T1,JSS1,Chemistry,34.4,40,28,18,Good
+STU_0057,Student 0057,Female,2026_T1,JSS1,Computer Science,36.9,40,35,23,Good
+STU_0057,Student 0057,Female,2026_T1,JSS1,Further Mathematics,37.2,40,32,21,Good
+STU_0057,Student 0057,Female,2026_T1,JSS1,Economics,35.3,40,32,21,Good
+STU_0057,Student 0057,Female,2026_T1,JSS1,Mathematics,35.5,40,34,23,Good
+STU_0057,Student 0057,Female,2026_T1,JSS1,Physics,37.2,40,30,20,Good
+STU_0058,Student 0058,Male,2026_T1,JSS1,Mathematics,30.9,40,28,19,Good
+STU_0058,Student 0058,Male,2026_T1,JSS1,Literature,33.9,40,32,22,Good
+STU_0058,Student 0058,Male,2026_T1,JSS1,Chemistry,31.4,40,34,23,Good
+STU_0058,Student 0058,Male,2026_T1,JSS1,Computer Science,35.3,40,28,19,Good
+STU_0058,Student 0058,Male,2026_T1,JSS1,Geography,37.8,40,28,19,Good
+STU_0058,Student 0058,Male,2026_T1,JSS1,English Language,31.5,40,32,22,Good
+STU_0059,Student 0059,Female,2026_T1,SS3,Mathematics,37.8,40,33,24,Excellent
+STU_0059,Student 0059,Female,2026_T1,SS3,Geography,35.3,40,26,19,Excellent
+STU_0059,Student 0059,Female,2026_T1,SS3,Computer Science,38.9,40,27,19,Excellent
+STU_0059,Student 0059,Female,2026_T1,SS3,Literature,34.3,40,29,21,Excellent
+STU_0059,Student 0059,Female,2026_T1,SS3,Physics,37.7,40,32,23,Excellent
+STU_0059,Student 0059,Female,2026_T1,SS3,Economics,35.0,40,28,20,Excellent
+STU_0060,Student 0060,Male,2026_T1,SS3,Biology,34.9,40,27,19,Average
+STU_0060,Student 0060,Male,2026_T1,SS3,Physics,33.3,40,28,20,Average
+STU_0060,Student 0060,Male,2026_T1,SS3,Geography,37.0,40,25,18,Average
+STU_0060,Student 0060,Male,2026_T1,SS3,Economics,33.6,40,27,19,Average
+STU_0060,Student 0060,Male,2026_T1,SS3,Computer Science,36.4,40,29,20,Average
+STU_0060,Student 0060,Male,2026_T1,SS3,English Language,34.6,40,26,18,Average
+STU_0061,Student 0061,Male,2026_T1,JSS1,Geography,26.3,40,26,12,Poor
+STU_0061,Student 0061,Male,2026_T1,JSS1,Computer Science,26.8,40,26,12,Poor
+STU_0061,Student 0061,Male,2026_T1,JSS1,Physics,25.0,40,27,12,Poor
+STU_0061,Student 0061,Male,2026_T1,JSS1,Biology,26.9,40,27,12,Poor
+STU_0061,Student 0061,Male,2026_T1,JSS1,Economics,29.6,40,28,13,Poor
+STU_0061,Student 0061,Male,2026_T1,JSS1,Chemistry,25.0,40,28,13,Poor
+STU_0062,Student 0062,Male,2026_T1,JSS2,Further Mathematics,40.0,40,35,24,Average
+STU_0062,Student 0062,Male,2026_T1,JSS2,Biology,40.0,40,29,20,Average
+STU_0062,Student 0062,Male,2026_T1,JSS2,Physics,36.2,40,27,19,Average
+STU_0062,Student 0062,Male,2026_T1,JSS2,Literature,34.9,40,33,23,Average
+STU_0062,Student 0062,Male,2026_T1,JSS2,English Language,38.4,40,34,23,Average
+STU_0062,Student 0062,Male,2026_T1,JSS2,Mathematics,36.7,40,32,22,Average
+STU_0063,Student 0063,Male,2026_T1,JSS1,Further Mathematics,20.9,40,30,15,Poor
+STU_0063,Student 0063,Male,2026_T1,JSS1,Geography,17.2,40,30,15,Poor
+STU_0063,Student 0063,Male,2026_T1,JSS1,Literature,15.5,40,33,17,Poor
+STU_0063,Student 0063,Male,2026_T1,JSS1,Biology,14.8,40,32,16,Poor
+STU_0063,Student 0063,Male,2026_T1,JSS1,Chemistry,19.3,40,32,16,Poor
+STU_0063,Student 0063,Male,2026_T1,JSS1,English Language,16.0,40,32,16,Poor
+STU_0064,Student 0064,Female,2026_T1,JSS1,Literature,33.0,40,31,27,Excellent
+STU_0064,Student 0064,Female,2026_T1,JSS1,Chemistry,34.8,40,34,29,Excellent
+STU_0064,Student 0064,Female,2026_T1,JSS1,Economics,31.9,40,27,23,Excellent
+STU_0064,Student 0064,Female,2026_T1,JSS1,English Language,32.8,40,30,26,Excellent
+STU_0064,Student 0064,Female,2026_T1,JSS1,Physics,32.9,40,29,25,Excellent
+STU_0064,Student 0064,Female,2026_T1,JSS1,Further Mathematics,34.3,40,33,29,Excellent
+STU_0065,Student 0065,Female,2026_T1,JSS3,Geography,28.1,40,30,12,Average
+STU_0065,Student 0065,Female,2026_T1,JSS3,Economics,26.5,40,32,13,Average
+STU_0065,Student 0065,Female,2026_T1,JSS3,Literature,27.0,40,30,12,Average
+STU_0065,Student 0065,Female,2026_T1,JSS3,Chemistry,26.2,40,29,12,Average
+STU_0065,Student 0065,Female,2026_T1,JSS3,Further Mathematics,23.9,40,31,12,Average
+STU_0065,Student 0065,Female,2026_T1,JSS3,Computer Science,27.4,40,25,10,Average
+STU_0066,Student 0066,Female,2026_T1,JSS1,Further Mathematics,27.5,40,26,14,Average
+STU_0066,Student 0066,Female,2026_T1,JSS1,English Language,21.9,40,30,16,Average
+STU_0066,Student 0066,Female,2026_T1,JSS1,Biology,22.1,40,25,14,Average
+STU_0066,Student 0066,Female,2026_T1,JSS1,Computer Science,21.9,40,33,18,Average
+STU_0066,Student 0066,Female,2026_T1,JSS1,Mathematics,25.1,40,28,15,Average
+STU_0066,Student 0066,Female,2026_T1,JSS1,Geography,24.6,40,30,16,Average
+STU_0067,Student 0067,Male,2026_T1,SS2,Mathematics,20.4,40,31,15,Good
+STU_0067,Student 0067,Male,2026_T1,SS2,Biology,18.9,40,34,17,Good
+STU_0067,Student 0067,Male,2026_T1,SS2,Further Mathematics,20.9,40,35,17,Good
+STU_0067,Student 0067,Male,2026_T1,SS2,Economics,17.6,40,25,12,Good
+STU_0067,Student 0067,Male,2026_T1,SS2,Physics,21.0,40,32,16,Good
+STU_0067,Student 0067,Male,2026_T1,SS2,Chemistry,22.5,40,35,17,Good
+STU_0068,Student 0068,Female,2026_T1,JSS2,Chemistry,31.5,40,26,18,Good
+STU_0068,Student 0068,Female,2026_T1,JSS2,Further Mathematics,30.9,40,30,21,Good
+STU_0068,Student 0068,Female,2026_T1,JSS2,Literature,37.1,40,28,20,Good
+STU_0068,Student 0068,Female,2026_T1,JSS2,Geography,32.8,40,31,22,Good
+STU_0068,Student 0068,Female,2026_T1,JSS2,Computer Science,36.2,40,31,22,Good
+STU_0068,Student 0068,Female,2026_T1,JSS2,Physics,33.7,40,28,20,Good
+STU_0069,Student 0069,Male,2026_T1,JSS3,Mathematics,36.7,40,31,18,Average
+STU_0069,Student 0069,Male,2026_T1,JSS3,Literature,37.9,40,35,20,Average
+STU_0069,Student 0069,Male,2026_T1,JSS3,Geography,35.2,40,31,18,Average
+STU_0069,Student 0069,Male,2026_T1,JSS3,Physics,37.3,40,33,19,Average
+STU_0069,Student 0069,Male,2026_T1,JSS3,English Language,36.2,40,29,17,Average
+STU_0069,Student 0069,Male,2026_T1,JSS3,Chemistry,34.4,40,30,17,Average
+STU_0070,Student 0070,Male,2026_T1,SS3,Computer Science,32.3,40,33,24,Average
+STU_0070,Student 0070,Male,2026_T1,SS3,Economics,31.1,40,31,22,Average
+STU_0070,Student 0070,Male,2026_T1,SS3,Further Mathematics,31.3,40,28,20,Average
+STU_0070,Student 0070,Male,2026_T1,SS3,English Language,29.2,40,32,23,Average
+STU_0070,Student 0070,Male,2026_T1,SS3,Chemistry,34.8,40,26,19,Average
+STU_0070,Student 0070,Male,2026_T1,SS3,Mathematics,33.4,40,30,21,Average
+STU_0071,Student 0071,Male,2026_T1,SS1,Computer Science,32.5,40,31,29,Average
+STU_0071,Student 0071,Male,2026_T1,SS1,Literature,29.9,40,29,27,Average
+STU_0071,Student 0071,Male,2026_T1,SS1,Mathematics,27.1,40,28,26,Average
+STU_0071,Student 0071,Male,2026_T1,SS1,English Language,34.4,40,28,26,Average
+STU_0071,Student 0071,Male,2026_T1,SS1,Economics,30.4,40,29,27,Average
+STU_0071,Student 0071,Male,2026_T1,SS1,Further Mathematics,29.0,40,35,33,Average
+STU_0072,Student 0072,Female,2026_T1,JSS2,Physics,31.4,40,26,21,Average
+STU_0072,Student 0072,Female,2026_T1,JSS2,English Language,32.9,40,31,25,Average
+STU_0072,Student 0072,Female,2026_T1,JSS2,Computer Science,30.5,40,28,22,Average
+STU_0072,Student 0072,Female,2026_T1,JSS2,Biology,33.1,40,27,22,Average
+STU_0072,Student 0072,Female,2026_T1,JSS2,Chemistry,32.7,40,28,22,Average
+STU_0072,Student 0072,Female,2026_T1,JSS2,Geography,28.4,40,29,23,Average
+STU_0073,Student 0073,Female,2026_T1,SS2,Literature,34.2,40,26,19,Excellent
+STU_0073,Student 0073,Female,2026_T1,SS2,Biology,37.5,40,31,23,Excellent
+STU_0073,Student 0073,Female,2026_T1,SS2,Chemistry,30.1,40,34,25,Excellent
+STU_0073,Student 0073,Female,2026_T1,SS2,Mathematics,35.2,40,28,21,Excellent
+STU_0073,Student 0073,Female,2026_T1,SS2,English Language,32.7,40,33,25,Excellent
+STU_0073,Student 0073,Female,2026_T1,SS2,Computer Science,34.6,40,30,22,Excellent
+STU_0074,Student 0074,Female,2026_T1,JSS2,Literature,33.4,40,31,22,Excellent
+STU_0074,Student 0074,Female,2026_T1,JSS2,Geography,33.3,40,28,20,Excellent
+STU_0074,Student 0074,Female,2026_T1,JSS2,Biology,32.9,40,27,19,Excellent
+STU_0074,Student 0074,Female,2026_T1,JSS2,Chemistry,31.8,40,34,24,Excellent
+STU_0074,Student 0074,Female,2026_T1,JSS2,Computer Science,38.6,40,31,22,Excellent
+STU_0074,Student 0074,Female,2026_T1,JSS2,English Language,37.8,40,32,23,Excellent
+STU_0075,Student 0075,Male,2026_T1,SS3,Physics,31.6,40,32,29,Average
+STU_0075,Student 0075,Male,2026_T1,SS3,Biology,37.1,40,31,28,Average
+STU_0075,Student 0075,Male,2026_T1,SS3,Further Mathematics,33.2,40,33,30,Average
+STU_0075,Student 0075,Male,2026_T1,SS3,Geography,34.2,40,26,24,Average
+STU_0075,Student 0075,Male,2026_T1,SS3,Mathematics,33.8,40,30,27,Average
+STU_0075,Student 0075,Male,2026_T1,SS3,English Language,32.6,40,26,24,Average
+STU_0076,Student 0076,Male,2026_T1,SS2,Literature,34.7,40,31,26,Good
+STU_0076,Student 0076,Male,2026_T1,SS2,Mathematics,33.0,40,30,25,Good
+STU_0076,Student 0076,Male,2026_T1,SS2,English Language,31.8,40,31,26,Good
+STU_0076,Student 0076,Male,2026_T1,SS2,Geography,30.1,40,28,23,Good
+STU_0076,Student 0076,Male,2026_T1,SS2,Economics,31.0,40,31,26,Good
+STU_0076,Student 0076,Male,2026_T1,SS2,Chemistry,29.5,40,25,21,Good
+STU_0077,Student 0077,Female,2026_T1,SS2,English Language,20.7,40,32,21,Average
+STU_0077,Student 0077,Female,2026_T1,SS2,Further Mathematics,18.2,40,29,19,Average
+STU_0077,Student 0077,Female,2026_T1,SS2,Chemistry,20.1,40,27,18,Average
+STU_0077,Student 0077,Female,2026_T1,SS2,Geography,23.4,40,27,18,Average
+STU_0077,Student 0077,Female,2026_T1,SS2,Literature,23.0,40,25,16,Average
+STU_0077,Student 0077,Female,2026_T1,SS2,Computer Science,20.6,40,34,22,Average
+STU_0078,Student 0078,Male,2026_T1,SS1,Physics,20.0,40,35,20,Good
+STU_0078,Student 0078,Male,2026_T1,SS1,Literature,23.9,40,33,19,Good
+STU_0078,Student 0078,Male,2026_T1,SS1,Geography,21.2,40,28,16,Good
+STU_0078,Student 0078,Male,2026_T1,SS1,English Language,19.5,40,32,18,Good
+STU_0078,Student 0078,Male,2026_T1,SS1,Economics,17.3,40,25,14,Good
+STU_0078,Student 0078,Male,2026_T1,SS1,Mathematics,20.9,40,35,20,Good
+STU_0079,Student 0079,Female,2026_T1,JSS2,Mathematics,35.4,40,28,23,Poor
+STU_0079,Student 0079,Female,2026_T1,JSS2,Economics,32.5,40,26,21,Poor
+STU_0079,Student 0079,Female,2026_T1,JSS2,Chemistry,34.3,40,25,20,Poor
+STU_0079,Student 0079,Female,2026_T1,JSS2,English Language,33.0,40,31,25,Poor
+STU_0079,Student 0079,Female,2026_T1,JSS2,Physics,33.4,40,25,20,Poor
+STU_0079,Student 0079,Female,2026_T1,JSS2,Further Mathematics,28.8,40,25,20,Poor
+STU_0080,Student 0080,Female,2026_T1,SS1,Physics,32.2,40,30,23,Average
+STU_0080,Student 0080,Female,2026_T1,SS1,Computer Science,34.6,40,30,23,Average
+STU_0080,Student 0080,Female,2026_T1,SS1,Mathematics,31.4,40,33,25,Average
+STU_0080,Student 0080,Female,2026_T1,SS1,Chemistry,32.8,40,35,27,Average
+STU_0080,Student 0080,Female,2026_T1,SS1,Biology,31.2,40,28,22,Average
+STU_0080,Student 0080,Female,2026_T1,SS1,Literature,33.4,40,34,26,Average
+STU_0081,Student 0081,Female,2026_T1,SS1,Mathematics,23.5,40,32,19,Poor
+STU_0081,Student 0081,Female,2026_T1,SS1,Economics,22.1,40,28,17,Poor
+STU_0081,Student 0081,Female,2026_T1,SS1,Geography,26.6,40,26,16,Poor
+STU_0081,Student 0081,Female,2026_T1,SS1,Computer Science,25.8,40,35,21,Poor
+STU_0081,Student 0081,Female,2026_T1,SS1,Chemistry,22.8,40,29,17,Poor
+STU_0081,Student 0081,Female,2026_T1,SS1,English Language,25.0,40,35,21,Poor
+STU_0082,Student 0082,Male,2026_T1,JSS2,English Language,28.3,40,30,27,Good
+STU_0082,Student 0082,Male,2026_T1,JSS2,Further Mathematics,28.5,40,35,32,Good
+STU_0082,Student 0082,Male,2026_T1,JSS2,Physics,23.9,40,31,28,Good
+STU_0082,Student 0082,Male,2026_T1,JSS2,Literature,29.3,40,35,32,Good
+STU_0082,Student 0082,Male,2026_T1,JSS2,Mathematics,26.1,40,27,25,Good
+STU_0082,Student 0082,Male,2026_T1,JSS2,Biology,26.5,40,30,27,Good
+STU_0083,Student 0083,Female,2026_T1,JSS1,Literature,31.3,40,28,14,Average
+STU_0083,Student 0083,Female,2026_T1,JSS1,Economics,26.7,40,25,13,Average
+STU_0083,Student 0083,Female,2026_T1,JSS1,Chemistry,25.3,40,34,17,Average
+STU_0083,Student 0083,Female,2026_T1,JSS1,Biology,21.7,40,26,13,Average
+STU_0083,Student 0083,Female,2026_T1,JSS1,Further Mathematics,28.8,40,29,15,Average
+STU_0083,Student 0083,Female,2026_T1,JSS1,Mathematics,23.4,40,28,14,Average
+STU_0084,Student 0084,Male,2026_T1,JSS1,Economics,31.4,40,32,26,Average
+STU_0084,Student 0084,Male,2026_T1,JSS1,Chemistry,32.7,40,30,25,Average
+STU_0084,Student 0084,Male,2026_T1,JSS1,Mathematics,36.2,40,27,22,Average
+STU_0084,Student 0084,Male,2026_T1,JSS1,English Language,34.9,40,29,24,Average
+STU_0084,Student 0084,Male,2026_T1,JSS1,Geography,33.1,40,30,25,Average
+STU_0084,Student 0084,Male,2026_T1,JSS1,Biology,34.0,40,35,29,Average
+STU_0085,Student 0085,Male,2026_T1,SS3,Geography,28.1,40,35,29,Good
+STU_0085,Student 0085,Male,2026_T1,SS3,Chemistry,29.6,40,28,23,Good
+STU_0085,Student 0085,Male,2026_T1,SS3,Further Mathematics,29.4,40,34,29,Good
+STU_0085,Student 0085,Male,2026_T1,SS3,Biology,31.2,40,31,26,Good
+STU_0085,Student 0085,Male,2026_T1,SS3,Mathematics,31.2,40,33,28,Good
+STU_0085,Student 0085,Male,2026_T1,SS3,English Language,30.3,40,30,25,Good
+STU_0086,Student 0086,Female,2026_T1,SS1,Physics,23.5,40,33,12,Average
+STU_0086,Student 0086,Female,2026_T1,SS1,Chemistry,25.7,40,28,10,Average
+STU_0086,Student 0086,Female,2026_T1,SS1,Computer Science,24.1,40,28,10,Average
+STU_0086,Student 0086,Female,2026_T1,SS1,Mathematics,22.1,40,33,12,Average
+STU_0086,Student 0086,Female,2026_T1,SS1,English Language,23.4,40,26,9,Average
+STU_0086,Student 0086,Female,2026_T1,SS1,Biology,24.4,40,31,11,Average
+STU_0087,Student 0087,Female,2026_T1,JSS3,Computer Science,32.5,40,30,26,Average
+STU_0087,Student 0087,Female,2026_T1,JSS3,Literature,30.3,40,31,27,Average
+STU_0087,Student 0087,Female,2026_T1,JSS3,Chemistry,28.2,40,31,27,Average
+STU_0087,Student 0087,Female,2026_T1,JSS3,Physics,30.8,40,27,23,Average
+STU_0087,Student 0087,Female,2026_T1,JSS3,Further Mathematics,30.9,40,32,28,Average
+STU_0087,Student 0087,Female,2026_T1,JSS3,Mathematics,31.0,40,32,28,Average
+STU_0088,Student 0088,Female,2026_T1,SS1,Economics,37.9,40,33,27,Excellent
+STU_0088,Student 0088,Female,2026_T1,SS1,English Language,38.0,40,27,22,Excellent
+STU_0088,Student 0088,Female,2026_T1,SS1,Biology,34.8,40,29,23,Excellent
+STU_0088,Student 0088,Female,2026_T1,SS1,Literature,34.8,40,31,25,Excellent
+STU_0088,Student 0088,Female,2026_T1,SS1,Computer Science,33.9,40,32,26,Excellent
+STU_0088,Student 0088,Female,2026_T1,SS1,Further Mathematics,37.4,40,29,23,Excellent
+STU_0089,Student 0089,Female,2026_T1,SS1,Chemistry,33.6,40,32,27,Average
+STU_0089,Student 0089,Female,2026_T1,SS1,Mathematics,30.1,40,31,26,Average
+STU_0089,Student 0089,Female,2026_T1,SS1,Further Mathematics,30.3,40,31,26,Average
+STU_0089,Student 0089,Female,2026_T1,SS1,Economics,33.7,40,31,26,Average
+STU_0089,Student 0089,Female,2026_T1,SS1,Biology,31.8,40,30,25,Average
+STU_0089,Student 0089,Female,2026_T1,SS1,Physics,31.6,40,31,26,Average
+STU_0090,Student 0090,Male,2026_T1,SS1,Chemistry,34.3,40,33,29,Average
+STU_0090,Student 0090,Male,2026_T1,SS1,Economics,38.1,40,32,28,Average
+STU_0090,Student 0090,Male,2026_T1,SS1,Biology,34.9,40,35,31,Average
+STU_0090,Student 0090,Male,2026_T1,SS1,Further Mathematics,34.5,40,30,27,Average
+STU_0090,Student 0090,Male,2026_T1,SS1,Geography,36.0,40,25,22,Average
+STU_0090,Student 0090,Male,2026_T1,SS1,Physics,35.5,40,35,31,Average
+STU_0091,Student 0091,Male,2026_T1,SS3,Mathematics,29.0,40,29,22,Good
+STU_0091,Student 0091,Male,2026_T1,SS3,Physics,26.6,40,28,21,Good
+STU_0091,Student 0091,Male,2026_T1,SS3,Biology,31.4,40,34,26,Good
+STU_0091,Student 0091,Male,2026_T1,SS3,Literature,31.7,40,34,26,Good
+STU_0091,Student 0091,Male,2026_T1,SS3,Chemistry,25.6,40,35,27,Good
+STU_0091,Student 0091,Male,2026_T1,SS3,English Language,31.4,40,27,20,Good
+STU_0092,Student 0092,Female,2026_T1,JSS1,Further Mathematics,26.6,40,29,17,Average
+STU_0092,Student 0092,Female,2026_T1,JSS1,Chemistry,29.9,40,33,20,Average
+STU_0092,Student 0092,Female,2026_T1,JSS1,Economics,28.0,40,33,20,Average
+STU_0092,Student 0092,Female,2026_T1,JSS1,English Language,28.2,40,35,21,Average
+STU_0092,Student 0092,Female,2026_T1,JSS1,Computer Science,27.8,40,31,18,Average
+STU_0092,Student 0092,Female,2026_T1,JSS1,Physics,30.6,40,34,20,Average
+STU_0093,Student 0093,Male,2026_T1,SS3,Geography,31.9,40,29,24,Excellent
+STU_0093,Student 0093,Male,2026_T1,SS3,Physics,35.5,40,25,21,Excellent
+STU_0093,Student 0093,Male,2026_T1,SS3,Biology,36.5,40,27,22,Excellent
+STU_0093,Student 0093,Male,2026_T1,SS3,Computer Science,35.8,40,32,27,Excellent
+STU_0093,Student 0093,Male,2026_T1,SS3,English Language,39.0,40,25,21,Excellent
+STU_0093,Student 0093,Male,2026_T1,SS3,Chemistry,33.3,40,26,22,Excellent
+STU_0094,Student 0094,Male,2026_T1,SS3,Physics,31.1,40,32,16,Average
+STU_0094,Student 0094,Male,2026_T1,SS3,Chemistry,28.9,40,34,17,Average
+STU_0094,Student 0094,Male,2026_T1,SS3,Literature,31.6,40,28,14,Average
+STU_0094,Student 0094,Male,2026_T1,SS3,English Language,29.1,40,27,13,Average
+STU_0094,Student 0094,Male,2026_T1,SS3,Biology,28.4,40,28,14,Average
+STU_0094,Student 0094,Male,2026_T1,SS3,Mathematics,31.8,40,25,12,Average
+STU_0095,Student 0095,Male,2026_T1,SS3,English Language,34.8,40,26,20,Average
+STU_0095,Student 0095,Male,2026_T1,SS3,Biology,32.9,40,30,23,Average
+STU_0095,Student 0095,Male,2026_T1,SS3,Computer Science,34.7,40,25,19,Average
+STU_0095,Student 0095,Male,2026_T1,SS3,Chemistry,37.0,40,34,26,Average
+STU_0095,Student 0095,Male,2026_T1,SS3,Mathematics,38.5,40,28,21,Average
+STU_0095,Student 0095,Male,2026_T1,SS3,Physics,36.0,40,32,24,Average
+STU_0096,Student 0096,Male,2026_T1,JSS1,Mathematics,39.8,40,34,19,Good
+STU_0096,Student 0096,Male,2026_T1,JSS1,English Language,34.4,40,33,18,Good
+STU_0096,Student 0096,Male,2026_T1,JSS1,Chemistry,36.2,40,29,16,Good
+STU_0096,Student 0096,Male,2026_T1,JSS1,Biology,36.5,40,32,18,Good
+STU_0096,Student 0096,Male,2026_T1,JSS1,Computer Science,36.9,40,32,18,Good
+STU_0096,Student 0096,Male,2026_T1,JSS1,Literature,37.3,40,30,17,Good
+STU_0097,Student 0097,Male,2026_T1,JSS1,Economics,35.7,40,25,22,Good
+STU_0097,Student 0097,Male,2026_T1,JSS1,Computer Science,33.5,40,32,28,Good
+STU_0097,Student 0097,Male,2026_T1,JSS1,Mathematics,34.6,40,31,28,Good
+STU_0097,Student 0097,Male,2026_T1,JSS1,Physics,34.3,40,27,24,Good
+STU_0097,Student 0097,Male,2026_T1,JSS1,Further Mathematics,32.5,40,25,22,Good
+STU_0097,Student 0097,Male,2026_T1,JSS1,Literature,34.1,40,34,30,Good
+STU_0098,Student 0098,Female,2026_T1,SS1,Literature,24.4,40,35,24,Poor
+STU_0098,Student 0098,Female,2026_T1,SS1,Further Mathematics,24.3,40,30,21,Poor
+STU_0098,Student 0098,Female,2026_T1,SS1,Economics,24.7,40,25,17,Poor
+STU_0098,Student 0098,Female,2026_T1,SS1,Geography,24.8,40,35,24,Poor
+STU_0098,Student 0098,Female,2026_T1,SS1,English Language,23.8,40,30,21,Poor
+STU_0098,Student 0098,Female,2026_T1,SS1,Mathematics,27.2,40,25,17,Poor
+STU_0099,Student 0099,Male,2026_T1,SS3,English Language,33.7,40,31,25,Average
+STU_0099,Student 0099,Male,2026_T1,SS3,Geography,34.6,40,29,24,Average
+STU_0099,Student 0099,Male,2026_T1,SS3,Economics,40.0,40,34,28,Average
+STU_0099,Student 0099,Male,2026_T1,SS3,Chemistry,33.9,40,28,23,Average
+STU_0099,Student 0099,Male,2026_T1,SS3,Further Mathematics,33.3,40,27,22,Average
+STU_0099,Student 0099,Male,2026_T1,SS3,Mathematics,37.5,40,33,27,Average
+STU_0100,Student 0100,Female,2026_T1,JSS3,Further Mathematics,29.5,40,35,31,Average
+STU_0100,Student 0100,Female,2026_T1,JSS3,Literature,33.1,40,33,30,Average
+STU_0100,Student 0100,Female,2026_T1,JSS3,Physics,37.9,40,28,25,Average
+STU_0100,Student 0100,Female,2026_T1,JSS3,Chemistry,30.5,40,28,25,Average
+STU_0100,Student 0100,Female,2026_T1,JSS3,Mathematics,29.7,40,28,25,Average
+STU_0100,Student 0100,Female,2026_T1,JSS3,Economics,30.6,40,27,24,Average
+STU_0101,Student 0101,Female,2026_T1,JSS1,Geography,39.4,40,35,21,Good
+STU_0101,Student 0101,Female,2026_T1,JSS1,Economics,39.8,40,32,19,Good
+STU_0101,Student 0101,Female,2026_T1,JSS1,Biology,36.5,40,35,21,Good
+STU_0101,Student 0101,Female,2026_T1,JSS1,English Language,38.9,40,26,15,Good
+STU_0101,Student 0101,Female,2026_T1,JSS1,Computer Science,40.0,40,35,21,Good
+STU_0101,Student 0101,Female,2026_T1,JSS1,Physics,40.0,40,27,16,Good
+STU_0102,Student 0102,Female,2026_T1,JSS2,Computer Science,32.8,40,35,26,Excellent
+STU_0102,Student 0102,Female,2026_T1,JSS2,English Language,28.7,40,35,26,Excellent
+STU_0102,Student 0102,Female,2026_T1,JSS2,Geography,31.7,40,33,24,Excellent
+STU_0102,Student 0102,Female,2026_T1,JSS2,Chemistry,32.5,40,31,23,Excellent
+STU_0102,Student 0102,Female,2026_T1,JSS2,Literature,32.8,40,28,21,Excellent
+STU_0102,Student 0102,Female,2026_T1,JSS2,Economics,33.0,40,28,21,Excellent
+STU_0103,Student 0103,Female,2026_T1,JSS2,English Language,34.6,40,34,25,Good
+STU_0103,Student 0103,Female,2026_T1,JSS2,Geography,34.9,40,25,18,Good
+STU_0103,Student 0103,Female,2026_T1,JSS2,Physics,32.0,40,29,21,Good
+STU_0103,Student 0103,Female,2026_T1,JSS2,Economics,34.6,40,25,18,Good
+STU_0103,Student 0103,Female,2026_T1,JSS2,Literature,33.1,40,34,25,Good
+STU_0103,Student 0103,Female,2026_T1,JSS2,Chemistry,32.5,40,33,24,Good
+STU_0104,Student 0104,Male,2026_T1,JSS2,English Language,27.0,40,27,16,Average
+STU_0104,Student 0104,Male,2026_T1,JSS2,Economics,25.4,40,29,17,Average
+STU_0104,Student 0104,Male,2026_T1,JSS2,Mathematics,29.3,40,28,16,Average
+STU_0104,Student 0104,Male,2026_T1,JSS2,Biology,22.3,40,32,19,Average
+STU_0104,Student 0104,Male,2026_T1,JSS2,Chemistry,24.2,40,35,20,Average
+STU_0104,Student 0104,Male,2026_T1,JSS2,Physics,25.0,40,32,19,Average
+STU_0105,Student 0105,Male,2026_T1,SS2,English Language,23.4,40,29,17,Poor
+STU_0105,Student 0105,Male,2026_T1,SS2,Biology,25.1,40,31,18,Poor
+STU_0105,Student 0105,Male,2026_T1,SS2,Literature,22.5,40,25,14,Poor
+STU_0105,Student 0105,Male,2026_T1,SS2,Geography,19.7,40,30,17,Poor
+STU_0105,Student 0105,Male,2026_T1,SS2,Computer Science,24.2,40,27,16,Poor
+STU_0105,Student 0105,Male,2026_T1,SS2,Chemistry,24.1,40,28,16,Poor
+STU_0106,Student 0106,Female,2026_T1,SS1,Literature,30.8,40,25,19,Excellent
+STU_0106,Student 0106,Female,2026_T1,SS1,Economics,34.7,40,33,25,Excellent
+STU_0106,Student 0106,Female,2026_T1,SS1,Biology,31.5,40,31,24,Excellent
+STU_0106,Student 0106,Female,2026_T1,SS1,Further Mathematics,33.3,40,30,23,Excellent
+STU_0106,Student 0106,Female,2026_T1,SS1,Geography,32.9,40,31,24,Excellent
+STU_0106,Student 0106,Female,2026_T1,SS1,English Language,36.3,40,35,27,Excellent
+STU_0107,Student 0107,Female,2026_T1,JSS2,Chemistry,31.9,40,34,24,Average
+STU_0107,Student 0107,Female,2026_T1,JSS2,Further Mathematics,29.1,40,25,18,Average
+STU_0107,Student 0107,Female,2026_T1,JSS2,Economics,33.4,40,29,21,Average
+STU_0107,Student 0107,Female,2026_T1,JSS2,Mathematics,28.8,40,32,23,Average
+STU_0107,Student 0107,Female,2026_T1,JSS2,English Language,32.3,40,35,25,Average
+STU_0107,Student 0107,Female,2026_T1,JSS2,Physics,30.0,40,27,19,Average
+STU_0108,Student 0108,Male,2026_T1,SS1,Mathematics,29.9,40,31,26,Average
+STU_0108,Student 0108,Male,2026_T1,SS1,Geography,31.7,40,35,29,Average
+STU_0108,Student 0108,Male,2026_T1,SS1,English Language,31.7,40,27,22,Average
+STU_0108,Student 0108,Male,2026_T1,SS1,Further Mathematics,33.4,40,25,21,Average
+STU_0108,Student 0108,Male,2026_T1,SS1,Literature,30.5,40,26,21,Average
+STU_0108,Student 0108,Male,2026_T1,SS1,Chemistry,31.3,40,30,25,Average
+STU_0109,Student 0109,Female,2026_T1,JSS2,Economics,29.8,40,32,21,Excellent
+STU_0109,Student 0109,Female,2026_T1,JSS2,Chemistry,31.1,40,29,19,Excellent
+STU_0109,Student 0109,Female,2026_T1,JSS2,Mathematics,31.6,40,34,23,Excellent
+STU_0109,Student 0109,Female,2026_T1,JSS2,Literature,30.5,40,27,18,Excellent
+STU_0109,Student 0109,Female,2026_T1,JSS2,English Language,27.1,40,35,23,Excellent
+STU_0109,Student 0109,Female,2026_T1,JSS2,Further Mathematics,31.4,40,31,21,Excellent
+STU_0110,Student 0110,Female,2026_T1,JSS3,Biology,40.0,40,26,23,Average
+STU_0110,Student 0110,Female,2026_T1,JSS3,Literature,38.2,40,26,23,Average
+STU_0110,Student 0110,Female,2026_T1,JSS3,Geography,37.0,40,32,29,Average
+STU_0110,Student 0110,Female,2026_T1,JSS3,Mathematics,40.0,40,35,31,Average
+STU_0110,Student 0110,Female,2026_T1,JSS3,Economics,40.0,40,35,31,Average
+STU_0110,Student 0110,Female,2026_T1,JSS3,Further Mathematics,39.1,40,33,30,Average
+STU_0111,Student 0111,Male,2026_T1,SS1,Physics,22.6,40,29,21,Average
+STU_0111,Student 0111,Male,2026_T1,SS1,Economics,23.2,40,34,25,Average
+STU_0111,Student 0111,Male,2026_T1,SS1,Literature,27.5,40,27,19,Average
+STU_0111,Student 0111,Male,2026_T1,SS1,Geography,25.1,40,26,19,Average
+STU_0111,Student 0111,Male,2026_T1,SS1,Further Mathematics,23.8,40,30,22,Average
+STU_0111,Student 0111,Male,2026_T1,SS1,Chemistry,25.9,40,26,19,Average
+STU_0112,Student 0112,Female,2026_T1,JSS2,Further Mathematics,36.9,40,33,24,Good
+STU_0112,Student 0112,Female,2026_T1,JSS2,Computer Science,40.0,40,35,25,Good
+STU_0112,Student 0112,Female,2026_T1,JSS2,Literature,40.0,40,26,19,Good
+STU_0112,Student 0112,Female,2026_T1,JSS2,Mathematics,37.6,40,28,20,Good
+STU_0112,Student 0112,Female,2026_T1,JSS2,Biology,37.2,40,35,25,Good
+STU_0112,Student 0112,Female,2026_T1,JSS2,Geography,33.3,40,26,19,Good
+STU_0113,Student 0113,Male,2026_T1,JSS1,Physics,25.2,40,26,10,Average
+STU_0113,Student 0113,Male,2026_T1,JSS1,English Language,25.5,40,33,12,Average
+STU_0113,Student 0113,Male,2026_T1,JSS1,Biology,28.5,40,29,11,Average
+STU_0113,Student 0113,Male,2026_T1,JSS1,Economics,27.5,40,30,11,Average
+STU_0113,Student 0113,Male,2026_T1,JSS1,Mathematics,25.5,40,33,12,Average
+STU_0113,Student 0113,Male,2026_T1,JSS1,Geography,27.6,40,27,10,Average
+STU_0114,Student 0114,Female,2026_T1,SS1,Biology,35.7,40,30,21,Good
+STU_0114,Student 0114,Female,2026_T1,SS1,Further Mathematics,35.8,40,33,23,Good
+STU_0114,Student 0114,Female,2026_T1,SS1,Literature,30.9,40,30,21,Good
+STU_0114,Student 0114,Female,2026_T1,SS1,English Language,34.5,40,34,24,Good
+STU_0114,Student 0114,Female,2026_T1,SS1,Computer Science,32.0,40,33,23,Good
+STU_0114,Student 0114,Female,2026_T1,SS1,Chemistry,36.5,40,33,23,Good
+STU_0115,Student 0115,Male,2026_T1,SS2,Chemistry,18.2,40,27,15,Poor
+STU_0115,Student 0115,Male,2026_T1,SS2,Physics,14.8,40,34,20,Poor
+STU_0115,Student 0115,Male,2026_T1,SS2,Computer Science,15.1,40,31,18,Poor
+STU_0115,Student 0115,Male,2026_T1,SS2,Biology,15.7,40,26,15,Poor
+STU_0115,Student 0115,Male,2026_T1,SS2,Further Mathematics,12.1,40,33,19,Poor
+STU_0115,Student 0115,Male,2026_T1,SS2,Geography,17.3,40,29,17,Poor
+STU_0116,Student 0116,Male,2026_T1,JSS1,Physics,31.5,40,35,23,Good
+STU_0116,Student 0116,Male,2026_T1,JSS1,Further Mathematics,33.9,40,35,23,Good
+STU_0116,Student 0116,Male,2026_T1,JSS1,Chemistry,29.8,40,28,18,Good
+STU_0116,Student 0116,Male,2026_T1,JSS1,Mathematics,30.8,40,30,19,Good
+STU_0116,Student 0116,Male,2026_T1,JSS1,Geography,29.0,40,34,22,Good
+STU_0116,Student 0116,Male,2026_T1,JSS1,Computer Science,30.0,40,35,23,Good
+STU_0117,Student 0117,Female,2026_T1,JSS1,Computer Science,29.6,40,26,19,Average
+STU_0117,Student 0117,Female,2026_T1,JSS1,Chemistry,34.0,40,35,26,Average
+STU_0117,Student 0117,Female,2026_T1,JSS1,English Language,30.6,40,33,24,Average
+STU_0117,Student 0117,Female,2026_T1,JSS1,Physics,32.3,40,31,23,Average
+STU_0117,Student 0117,Female,2026_T1,JSS1,Mathematics,31.3,40,26,19,Average
+STU_0117,Student 0117,Female,2026_T1,JSS1,Biology,29.5,40,30,22,Average
+STU_0118,Student 0118,Male,2026_T1,SS3,English Language,29.2,40,27,21,Good
+STU_0118,Student 0118,Male,2026_T1,SS3,Economics,30.7,40,33,26,Good
+STU_0118,Student 0118,Male,2026_T1,SS3,Chemistry,27.1,40,29,23,Good
+STU_0118,Student 0118,Male,2026_T1,SS3,Literature,31.1,40,34,27,Good
+STU_0118,Student 0118,Male,2026_T1,SS3,Mathematics,27.8,40,32,25,Good
+STU_0118,Student 0118,Male,2026_T1,SS3,Geography,28.5,40,26,20,Good
+STU_0119,Student 0119,Male,2026_T1,SS2,Economics,34.7,40,33,27,Good
+STU_0119,Student 0119,Male,2026_T1,SS2,Physics,32.3,40,34,28,Good
+STU_0119,Student 0119,Male,2026_T1,SS2,Geography,33.7,40,31,26,Good
+STU_0119,Student 0119,Male,2026_T1,SS2,Computer Science,33.0,40,32,27,Good
+STU_0119,Student 0119,Male,2026_T1,SS2,Literature,33.9,40,34,28,Good
+STU_0119,Student 0119,Male,2026_T1,SS2,Biology,28.9,40,27,22,Good
+STU_0120,Student 0120,Female,2026_T1,JSS1,Mathematics,29.0,40,32,27,Excellent
+STU_0120,Student 0120,Female,2026_T1,JSS1,Geography,33.9,40,27,22,Excellent
+STU_0120,Student 0120,Female,2026_T1,JSS1,Chemistry,34.7,40,32,27,Excellent
+STU_0120,Student 0120,Female,2026_T1,JSS1,Further Mathematics,30.8,40,30,25,Excellent
+STU_0120,Student 0120,Female,2026_T1,JSS1,Biology,32.1,40,32,27,Excellent
+STU_0120,Student 0120,Female,2026_T1,JSS1,Literature,33.2,40,33,27,Excellent
