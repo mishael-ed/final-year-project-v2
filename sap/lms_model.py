@@ -89,6 +89,8 @@ def _normalise_lms_columns(df: pd.DataFrame) -> pd.DataFrame:
 # Preprocessing
 # ------------------------------------------------------------------------------
 
+TERM_DAYS = 90  # average term length (3 months)
+
 def prepare_lms(df: pd.DataFrame) -> pd.DataFrame:
     """Normalise columns and coerce numerics. Target is pass_fail (0=Fail, 1=Pass)."""
     data = _normalise_lms_columns(df).copy()
@@ -96,6 +98,12 @@ def prepare_lms(df: pd.DataFrame) -> pd.DataFrame:
     for col in LMS_FEATURES:
         if col in data.columns:
             data[col] = pd.to_numeric(data[col], errors="coerce").fillna(0.0)
+
+    # Express logins as a fraction of total term days (login rate 0–1)
+    if "lms_logins_per_semester" in data.columns:
+        data["lms_logins_per_semester"] = (
+            data["lms_logins_per_semester"] / TERM_DAYS
+        ).clip(upper=1.0)
 
     if "pass_fail" in data.columns:
         data["target"] = pd.to_numeric(data["pass_fail"], errors="coerce").fillna(0).astype(int)

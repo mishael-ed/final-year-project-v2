@@ -567,7 +567,6 @@ with tab_lms:
             st.markdown(
                 "| Column | Example |\n|---|---|\n"
                 "| `student_id` | S001 *(optional)* |\n"
-                "| `GPA` | 3.20 |\n"
                 "| `lms_logins_per_semester` | 57 |\n"
                 "| `avg_session_duration_minutes` | 49 |\n"
                 "| `assignment_submission_rate` | 0.76 *(or 76)* |\n"
@@ -579,7 +578,6 @@ with tab_lms:
         st.markdown("#### Manual Entry")
         lms_seed = pd.DataFrame([{
             "student_id": "STU_001",
-            "GPA": 3.03,
             "lms_logins_per_semester": 58,
             "avg_session_duration_minutes": 49,
             "assignment_submission_rate": 0.75,
@@ -589,7 +587,6 @@ with tab_lms:
         lms_manual_df = st.data_editor(
             lms_seed, num_rows="dynamic", use_container_width=True,
             column_config={
-                "GPA": st.column_config.NumberColumn("GPA", min_value=0.0, max_value=4.0, step=0.01),
                 "lms_logins_per_semester": st.column_config.NumberColumn("LMS Logins", min_value=0, step=1),
                 "avg_session_duration_minutes": st.column_config.NumberColumn("Avg Session (min)", min_value=0, step=1),
                 "assignment_submission_rate": st.column_config.NumberColumn("Submission Rate", min_value=0.0, max_value=1.0, step=0.01),
@@ -653,7 +650,7 @@ with tab_lms:
         })
         lms_view["Pass Probability"] = (lms_view["Pass Probability"] * 100).round(1).astype(str) + "%"
         display_cols = [c for c in [
-            "Student ID", "GPA", "LMS Logins", "Avg Session (min)",
+            "Student ID", "LMS Logins", "Avg Session (min)",
             "Submission Rate", "Forum Posts", "Video Completion",
             "Prediction", "Pass Probability", "Risk Level",
         ] if c in lms_view.columns]
@@ -730,25 +727,6 @@ with tab_lms:
                 st.pyplot(fig_lh)
                 plt.close(fig_lh)
 
-            # GPA vs Pass Probability scatter
-            if "GPA" in lms_preds.columns:
-                st.markdown("#### GPA vs. Pass Probability (coloured by risk)")
-                risk_cmap = {"High": "#e74c3c", "Medium": "#e67e22", "Low": "#27ae60"}
-                fig_ls, ax_ls = plt.subplots(figsize=(8, 4))
-                for tier, grp in lms_preds.groupby("risk_tier"):
-                    ax_ls.scatter(grp["GPA"], grp["pass_probability"] * 100,
-                                  c=risk_cmap.get(tier, "#7c3aed"),
-                                  label=tier, alpha=0.75, edgecolors="none", s=50)
-                ax_ls.set_xlabel("GPA",                     color="#111827")
-                ax_ls.set_ylabel("Pass Probability (%)",    color="#111827")
-                ax_ls.tick_params(colors="#111827")
-                ax_ls.spines[:].set_color("#9ca3af")
-                ax_ls.set_facecolor("#ffffff")
-                fig_ls.patch.set_facecolor("#e8ecf1")
-                ax_ls.legend(title="Risk", facecolor="#ffffff", labelcolor="#111827",
-                             title_fontsize=9)
-                st.pyplot(fig_ls)
-                plt.close(fig_ls)
 
         except Exception as e:
             st.caption(f"Charts unavailable: {e}")
