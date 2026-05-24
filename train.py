@@ -47,13 +47,13 @@ def train_academic() -> None:
     prepared = prepare(df, mode="train")
     clean    = clean_data(prepared)
     term_df  = build_term_features(clean)
-    print(f"Records: {len(df):,} raw rows → {len(term_df):,} student-term rows")
+    print(f"Records: {len(df):,} raw rows -> {len(term_df):,} student-term rows")
 
     print("\nTraining Random Forest …")
     rf_res = train_rf(term_df)
     m = rf_res.metrics
     print(f"  Accuracy: {m['accuracy']:.1%}  F1: {m['f1']:.1%}  AUC: {m.get('auc', 0):.4f}")
-    print("  Saved → models/rf_model.joblib")
+    print("  Saved -> models/rf_model.joblib")
     if rf_res.warnings:
         for w in rf_res.warnings:
             print(f"  [WARN] {w}")
@@ -61,7 +61,7 @@ def train_academic() -> None:
     print("\nTraining XGBoost …")
     xgb_m = train_xgboost(term_df)
     print(f"  Accuracy: {xgb_m['accuracy']:.1%}  F1: {xgb_m['f1']:.1%}  AUC: {xgb_m.get('auc', 0):.4f}")
-    print("  Saved → models/xgboost_model.joblib")
+    print("  Saved -> models/xgboost_model.joblib")
 
     print("\n  Top 5 features (RF):")
     for _, row in rf_res.feature_importance.head(5).iterrows():
@@ -88,7 +88,7 @@ def train_lms() -> None:
     print("\nTraining LMS Random Forest …")
     rf_m = train_lms_rf(prepared)
     print(f"  Accuracy: {rf_m['accuracy']:.1%}  F1: {rf_m['f1']:.1%}  AUC: {rf_m.get('auc', 0):.4f}")
-    print("  Saved → models/lms_rf_model.joblib")
+    print("  Saved -> models/lms_rf_model.joblib")
 
     if "feature_importance" in rf_m:
         print("\n  Top 5 features (LMS-RF):")
@@ -98,7 +98,7 @@ def train_lms() -> None:
     print("\nTraining LMS XGBoost …")
     xgb_m = train_lms_xgboost(prepared)
     print(f"  Accuracy: {xgb_m['accuracy']:.1%}  F1: {xgb_m['f1']:.1%}  AUC: {xgb_m.get('auc', 0):.4f}")
-    print("  Saved → models/lms_xgb_model.joblib")
+    print("  Saved -> models/lms_xgb_model.joblib")
 
 
 if __name__ == "__main__":

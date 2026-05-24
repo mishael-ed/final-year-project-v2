@@ -1,0 +1,121 @@
+Student ID,Student Name,Term,Class,Predicted Outcome,Likelihood of Passing (%),Risk Level,CA Progress (%),Overall Score (%),Attendance (%),Subjects at Risk,Main Issue,Recommended Action
+STU_0001,Student 0001,2026_T1,JSS2,Pass,93.7,Low,76.9,76.9,64.9,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0002,Student 0002,2026_T1,SS2,Pass,94.0,Low,78.1,78.1,65.2,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0003,Student 0003,2026_T1,SS2,Pass,95.4,Low,95.8,95.8,96.7,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0004,Student 0004,2026_T1,JSS1,Pass,96.7,Low,95.3,95.3,66.4,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0005,Student 0005,2026_T1,SS2,Pass,96.7,Low,95.8,95.8,67.4,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0006,Student 0006,2026_T1,JSS3,Pass,87.9,Low,90.6,90.6,100.0,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0007,Student 0007,2026_T1,SS1,Pass,96.7,Low,95.2,95.2,89.2,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0008,Student 0008,2026_T1,JSS1,Pass,95.9,Low,93.1,93.1,68.4,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0009,Student 0009,2026_T1,JSS1,Pass,90.5,Low,72.1,72.1,85.4,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0010,Student 0010,2026_T1,JSS3,Fail,3.2,High,44.5,44.5,51.1,5,"Low attendance, Many failed subjects",Contact student/guardian regarding attendance. Consider counselling.
+STU_0011,Student 0011,2026_T1,JSS3,Pass,96.1,Low,88.4,88.4,77.2,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0012,Student 0012,2026_T1,JSS2,Fail,22.4,High,60.1,60.1,55.6,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0013,Student 0013,2026_T1,JSS1,Pass,96.1,Low,91.2,91.2,79.6,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0014,Student 0014,2026_T1,JSS2,Fail,11.0,High,52.5,52.5,37.4,1,"Low attendance, Low CA",Provide targeted CA support and additional practice materials.
+STU_0015,Student 0015,2026_T1,SS2,Fail,10.5,High,53.8,53.8,62.2,2,"Low attendance, Low CA",Provide targeted CA support and additional practice materials.
+STU_0016,Student 0016,2026_T1,JSS1,Pass,97.2,Low,97.0,97.0,77.4,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0017,Student 0017,2026_T1,JSS1,Fail,11.3,High,46.3,46.3,68.3,4,"Many failed subjects, Low CA",Provide targeted CA support and additional practice materials.
+STU_0018,Student 0018,2026_T1,SS3,Fail,20.1,High,58.6,58.6,57.1,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0019,Student 0019,2026_T1,SS1,Pass,94.9,Low,82.5,82.5,84.6,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0020,Student 0020,2026_T1,JSS1,Pass,88.5,Low,68.9,68.9,71.0,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0021,Student 0021,2026_T1,SS2,Pass,93.0,Low,75.5,75.5,80.5,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0022,Student 0022,2026_T1,JSS2,Pass,64.3,Medium,63.8,63.8,81.2,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0023,Student 0023,2026_T1,JSS2,Pass,96.3,Low,92.3,92.3,92.8,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0024,Student 0024,2026_T1,SS3,Pass,92.8,Low,94.5,94.5,92.8,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0025,Student 0025,2026_T1,SS1,Pass,60.3,Medium,64.1,64.1,46.2,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0026,Student 0026,2026_T1,SS2,Pass,90.9,Low,82.8,82.8,87.9,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0027,Student 0027,2026_T1,JSS2,Pass,94.3,Low,80.9,80.9,85.8,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0028,Student 0028,2026_T1,JSS3,Pass,89.7,Low,68.4,68.4,76.8,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0029,Student 0029,2026_T1,SS2,Pass,95.1,Low,82.3,82.3,69.9,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0030,Student 0030,2026_T1,SS2,Pass,96.6,Low,93.2,93.2,63.7,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0031,Student 0031,2026_T1,SS1,Pass,96.0,Low,87.2,87.2,74.5,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0032,Student 0032,2026_T1,JSS2,Pass,95.4,Low,87.5,87.5,59.9,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0033,Student 0033,2026_T1,SS2,Pass,91.2,Low,95.9,95.9,96.4,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0034,Student 0034,2026_T1,SS3,Pass,95.4,Low,85.8,85.8,85.4,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0035,Student 0035,2026_T1,SS3,Pass,93.6,Low,74.2,74.2,35.2,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0036,Student 0036,2026_T1,JSS2,Pass,94.5,Low,82.9,82.9,68.1,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0037,Student 0037,2026_T1,SS3,Pass,78.3,Low,65.4,65.4,56.4,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0038,Student 0038,2026_T1,JSS3,Pass,92.7,Low,85.2,85.2,84.9,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0039,Student 0039,2026_T1,SS1,Pass,93.9,Low,81.6,81.6,89.5,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0040,Student 0040,2026_T1,SS3,Pass,89.0,Low,69.1,69.1,93.1,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0041,Student 0041,2026_T1,SS3,Fail,5.9,High,51.1,51.1,60.6,2,"Low attendance, Low CA",Provide targeted CA support and additional practice materials.
+STU_0042,Student 0042,2026_T1,JSS3,Pass,90.2,Low,71.2,71.2,47.4,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0043,Student 0043,2026_T1,SS1,Pass,88.5,Low,76.5,76.5,96.8,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0044,Student 0044,2026_T1,SS2,Pass,89.0,Low,71.6,71.6,93.1,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0045,Student 0045,2026_T1,SS1,Pass,92.4,Low,77.3,77.3,91.5,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0046,Student 0046,2026_T1,JSS1,Pass,64.0,Medium,65.7,65.7,69.8,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0047,Student 0047,2026_T1,JSS2,Pass,94.4,Low,91.2,91.2,92.9,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0048,Student 0048,2026_T1,JSS2,Pass,88.9,Low,72.1,72.1,56.9,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0049,Student 0049,2026_T1,JSS1,Pass,96.1,Low,88.6,88.6,75.2,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0050,Student 0050,2026_T1,JSS3,Pass,93.5,Low,97.4,97.4,91.5,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0051,Student 0051,2026_T1,JSS1,Pass,87.5,Low,70.0,70.0,83.2,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0052,Student 0052,2026_T1,SS2,Fail,11.6,High,48.5,48.5,56.2,3,"Low attendance, Low CA",Provide targeted CA support and additional practice materials.
+STU_0053,Student 0053,2026_T1,SS2,Pass,94.9,Low,83.0,83.0,89.7,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0054,Student 0054,2026_T1,JSS2,Pass,94.1,Low,76.7,76.7,53.7,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0055,Student 0055,2026_T1,SS2,Pass,93.8,Low,89.2,89.2,70.9,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0056,Student 0056,2026_T1,JSS2,Pass,93.7,Low,74.7,74.7,40.3,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0057,Student 0057,2026_T1,JSS1,Pass,96.4,Low,90.2,90.2,65.9,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0058,Student 0058,2026_T1,JSS1,Pass,94.0,Low,83.7,83.7,68.1,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0059,Student 0059,2026_T1,SS3,Pass,96.8,Low,91.2,91.2,72.0,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0060,Student 0060,2026_T1,SS3,Pass,94.5,Low,87.4,87.4,70.4,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0061,Student 0061,2026_T1,JSS1,Pass,72.1,Medium,66.5,66.5,45.7,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0062,Student 0062,2026_T1,JSS2,Pass,95.6,Low,94.2,94.2,69.0,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0063,Student 0063,2026_T1,JSS1,Fail,2.3,High,43.2,43.2,50.3,5,"Low attendance, Many failed subjects",Contact student/guardian regarding attendance. Consider counselling.
+STU_0064,Student 0064,2026_T1,JSS1,Pass,94.9,Low,83.2,83.2,86.4,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0065,Student 0065,2026_T1,JSS3,Pass,78.9,Low,66.3,66.3,40.1,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0066,Student 0066,2026_T1,JSS1,Fail,26.1,High,59.6,59.6,54.1,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0067,Student 0067,2026_T1,SS2,Fail,14.6,High,50.5,50.5,48.9,2,"Low attendance, Low CA",Provide targeted CA support and additional practice materials.
+STU_0068,Student 0068,2026_T1,JSS2,Pass,95.4,Low,84.2,84.2,70.7,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0069,Student 0069,2026_T1,JSS3,Pass,96.0,Low,90.7,90.7,57.7,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0070,Student 0070,2026_T1,SS3,Pass,93.2,Low,80.0,80.0,71.7,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0071,Student 0071,2026_T1,SS1,Pass,88.6,Low,76.4,76.4,93.3,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0072,Student 0072,2026_T1,JSS2,Pass,92.3,Low,78.8,78.8,79.9,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0073,Student 0073,2026_T1,SS2,Pass,95.9,Low,85.1,85.1,74.1,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0074,Student 0074,2026_T1,JSS2,Pass,96.1,Low,86.6,86.6,71.0,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0075,Student 0075,2026_T1,SS3,Pass,91.4,Low,84.4,84.4,91.1,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0076,Student 0076,2026_T1,SS2,Pass,94.0,Low,79.2,79.2,83.5,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0077,Student 0077,2026_T1,SS2,Fail,10.9,High,52.5,52.5,65.5,1,"Low attendance, Low CA",Provide targeted CA support and additional practice materials.
+STU_0078,Student 0078,2026_T1,SS1,Fail,15.0,High,51.2,51.2,56.9,2,"Low attendance, Low CA",Provide targeted CA support and additional practice materials.
+STU_0079,Student 0079,2026_T1,JSS2,Pass,90.4,Low,82.2,82.2,80.6,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0080,Student 0080,2026_T1,SS1,Pass,93.8,Low,81.5,81.5,76.9,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0081,Student 0081,2026_T1,SS1,Fail,28.9,High,60.8,60.8,60.0,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0082,Student 0082,2026_T1,JSS2,Pass,85.0,Low,67.8,67.8,91.0,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0083,Student 0083,2026_T1,JSS1,Pass,78.2,Low,65.5,65.5,50.6,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0084,Student 0084,2026_T1,JSS1,Pass,92.6,Low,84.3,84.3,82.5,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0085,Student 0085,2026_T1,SS3,Pass,92.6,Low,74.9,74.9,83.7,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0086,Student 0086,2026_T1,SS1,Fail,25.9,High,59.7,59.7,35.7,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0087,Student 0087,2026_T1,JSS3,Pass,90.6,Low,76.5,76.5,86.8,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0088,Student 0088,2026_T1,SS1,Pass,95.8,Low,90.3,90.3,80.6,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0089,Student 0089,2026_T1,SS1,Pass,91.9,Low,79.6,79.6,83.9,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0090,Student 0090,2026_T1,SS1,Pass,92.1,Low,88.9,88.9,88.4,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0091,Student 0091,2026_T1,SS3,Pass,92.0,Low,73.2,73.2,75.8,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0092,Student 0092,2026_T1,JSS1,Pass,91.9,Low,71.3,71.3,59.5,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0093,Student 0093,2026_T1,SS3,Pass,95.9,Low,88.3,88.3,83.5,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0094,Student 0094,2026_T1,SS3,Pass,92.9,Low,75.4,75.4,49.4,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0095,Student 0095,2026_T1,SS3,Pass,94.7,Low,89.1,89.1,76.0,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0096,Student 0096,2026_T1,JSS1,Pass,96.2,Low,92.1,92.1,55.8,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0097,Student 0097,2026_T1,JSS1,Pass,94.0,Low,85.3,85.3,88.5,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0098,Student 0098,2026_T1,SS1,Fail,48.9,High,62.2,62.2,68.9,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0099,Student 0099,2026_T1,SS3,Pass,93.6,Low,88.8,88.8,81.9,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0100,Student 0100,2026_T1,JSS3,Pass,91.1,Low,79.7,79.7,89.4,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0101,Student 0101,2026_T1,JSS1,Pass,97.1,Low,97.8,97.8,59.4,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0102,Student 0102,2026_T1,JSS2,Pass,94.9,Low,79.8,79.8,74.2,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0103,Student 0103,2026_T1,JSS2,Pass,95.7,Low,84.0,84.0,72.7,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0104,Student 0104,2026_T1,JSS2,Pass,54.8,Medium,63.8,63.8,58.5,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0105,Student 0105,2026_T1,SS2,Fail,17.2,High,57.9,57.9,57.6,1,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0106,Student 0106,2026_T1,SS1,Pass,95.6,Low,83.1,83.1,76.7,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0107,Student 0107,2026_T1,JSS2,Pass,93.1,Low,77.3,77.3,71.4,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0108,Student 0108,2026_T1,SS1,Pass,91.2,Low,78.5,78.5,82.7,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0109,Student 0109,2026_T1,JSS2,Pass,94.1,Low,75.6,75.6,66.5,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0110,Student 0110,2026_T1,JSS3,Pass,94.3,Low,97.6,97.6,89.3,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0111,Student 0111,2026_T1,SS1,Fail,38.3,High,61.7,61.7,72.6,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0112,Student 0112,2026_T1,JSS2,Pass,97.0,Low,93.8,93.8,72.2,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0113,Student 0113,2026_T1,JSS1,Pass,75.7,Low,66.6,66.6,37.1,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0114,Student 0114,2026_T1,SS1,Pass,95.7,Low,85.6,85.6,69.9,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0115,Student 0115,2026_T1,SS2,Fail,1.4,High,38.8,38.8,57.7,6,"Many failed subjects, Low attendance",Contact student/guardian regarding attendance. Consider counselling.
+STU_0116,Student 0116,2026_T1,JSS1,Pass,93.7,Low,77.1,77.1,64.9,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0117,Student 0117,2026_T1,JSS1,Pass,93.2,Low,78.0,78.0,73.4,0,Low attendance,Contact student/guardian regarding attendance. Consider counselling.
+STU_0118,Student 0118,2026_T1,SS3,Pass,91.3,Low,72.7,72.7,78.4,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0119,Student 0119,2026_T1,SS2,Pass,94.7,Low,81.9,81.9,82.7,0,No major risk,Continue monitoring. No immediate intervention required.
+STU_0120,Student 0120,2026_T1,JSS1,Pass,94.7,Low,80.7,80.7,83.3,0,No major risk,Continue monitoring. No immediate intervention required.

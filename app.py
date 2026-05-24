@@ -6,7 +6,10 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
+import requests
 import streamlit as st
+
+BACKEND_URL = os.getenv("BACKEND_URL", "http://localhost:8000")
 
 from sap.config import APP_SUBTITLE, APP_TITLE, DEFAULT_THRESHOLDS, INTERVENTION_MESSAGES
 from sap.db import (
@@ -18,8 +21,10 @@ from sap.db import (
 )
 from sap.explainer import (
     SHAP_AVAILABLE,
-    compute_shap_values,
     explain_student,
+    explain_student_ensemble,
+    explain_student_lstm,
+    explain_student_xgboost,
     plot_global_importance,
     plot_student_waterfall,
 )
@@ -39,114 +44,6 @@ st.set_page_config(
 )
 
 # ──────────────────────────────────────────────────────────────────────────────
-# Global styles
-# ──────────────────────────────────────────────────────────────────────────────
-st.markdown("""
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;600;700&display=swap');
-
-/* Apply font to all content — but restore Material Symbols for Streamlit icon buttons */
-* { font-family: 'Volte', 'Volte Rounded', 'Jost', 'Segoe UI', sans-serif !important; }
-[data-testid="stExpandSidebarButton"] span,
-[data-testid="stExpandSidebarButton"] > *,
-[data-testid="stMainMenuButton"] span,
-[data-testid="stMainMenuButton"] > *,
-[data-testid="stIconMaterial"] {
-    font-family: 'Material Symbols Rounded' !important;
-}
-
-/* Background — slightly gray so white cards pop */
-.stApp { background: #e8ecf1; color: #111827; }
-footer { visibility: hidden; }
-
-/* All body text — strong readable dark */
-p, li, span, label, div { color: #111827; }
-
-/* Secondary / helper / caption text — dark enough to read */
-small, .stCaption p,
-[data-testid="stCaptionContainer"] p,
-[data-testid="stFileUploader"] small,
-[data-testid="stFileUploaderDropzoneInstructions"] p,
-[data-testid="stFileUploaderDropzoneInstructions"] small { color: #374151 !important; font-size: .82rem; }
-
-/* Hide Deploy button and toolbar clutter */
-button[data-testid="stBaseButton-header"] { display: none !important; }
-.stDeployButton, [data-testid="stDeployButton"], button[kind="deployButton"] { display: none !important; }
-
-/* Hide heading anchor links */
-h2 a, h3 a, h4 a { display: none !important; }
-
-/* Hero banner */
-.hero {
-    background: linear-gradient(120deg, #1e3a8a 0%, #1a56db 60%, #3b82f6 100%);
-    border-radius: 0px; padding: 1.2rem 1.6rem; color: white; margin-bottom: 1rem;
-}
-.hero h2 { margin: 0; font-size: 1.4rem; font-weight: 700; letter-spacing: 0.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: white !important; }
-.hero p  { margin: .3rem 0 0; opacity: .9; font-size: .9rem; color: white !important; }
-
-/* Metric cards */
-div[data-testid="stMetric"] {
-    background: #ffffff; border: 1px solid #9ca3af; border-radius: 0px;
-    padding: .5rem .75rem;
-}
-
-/* Risk badges */
-.badge-high   { background:#dc2626; color:white; border-radius:0px; padding:2px 8px; font-weight:bold; }
-.badge-medium { background:#d97706; color:white; border-radius:0px; padding:2px 8px; font-weight:bold; }
-.badge-low    { background:#16a34a; color:white; border-radius:0px; padding:2px 8px; font-weight:bold; }
-
-/* Section headers */
-h3, h4 { color: #1e3a8a !important; }
-
-/* Expander */
-.streamlit-expanderHeader { color: #1a56db !important; font-weight: 600; }
-
-/* Buttons */
-.stButton > button { border-radius: 0px !important; }
-
-/* Inputs / selects — stronger borders */
-.stTextInput > div > div > input { border-radius: 0px !important; border-color: #9ca3af !important; }
-[data-baseweb="select"] { border-radius: 0px !important; }
-[data-baseweb="select"] > div { border-color: #9ca3af !important; }
-[data-baseweb="input"]  { border-radius: 0px !important; border-color: #9ca3af !important; }
-
-/* File uploader — visible border */
-[data-testid="stFileUploader"] { border-radius: 0px !important; }
-[data-testid="stFileUploaderDropzone"] { border: 1.5px solid #9ca3af !important; border-radius: 0px !important; background: #ffffff !important; }
-
-/* Tabs — visible separator, aligned with hero text */
-.stTabs [data-baseweb="tab"]       { border-radius: 0px !important; color: #374151 !important; }
-.stTabs [data-baseweb="tab-list"]   { border-radius: 0px !important; border-bottom: 2px solid #9ca3af !important; background: #ffffff !important; padding-left: 1.6rem !important; }
-
-/* DataFrames */
-.stDataFrame { border-radius: 0px !important; }
-
-/* Expander content */
-.streamlit-expanderContent { border-radius: 0px !important; }
-
-/* Alert / info boxes — strong contrast */
-[data-testid="stAlert"] {
-    border-radius: 0px !important;
-    border-left: 4px solid #1a56db !important;
-    background: #dbeafe !important;
-}
-[data-testid="stAlert"] p { color: #1e3a8a !important; font-weight: 500 !important; }
-
-.block-container { max-width: 1200px; }
-</style>
-""", unsafe_allow_html=True)
-
-# ──────────────────────────────────────────────────────────────────────────────
-# Hero
-# ──────────────────────────────────────────────────────────────────────────────
-st.markdown(f"""
-<div class="hero">
-  <h2>{APP_TITLE}</h2>
-  <p>{APP_SUBTITLE}</p>
-</div>
-""", unsafe_allow_html=True)
-
-# ──────────────────────────────────────────────────────────────────────────────
 # Session-state defaults
 # ──────────────────────────────────────────────────────────────────────────────
 def _init_state() -> None:
@@ -158,6 +55,10 @@ def _init_state() -> None:
         "term_df": None,
         "lms_preds": None,
         "lms_pred_source": "",
+        # Auth
+        "access_token": None,
+        "refresh_token": None,
+        "current_user": None,   # {"username": ..., "email": ..., "role": ...}
     }
     for k, v in defaults.items():
         if k not in st.session_state:
@@ -171,10 +72,242 @@ def _init_state() -> None:
 
 _init_state()
 
+
 # ──────────────────────────────────────────────────────────────────────────────
-# Sidebar – Database
+# Auth helpers
+# ──────────────────────────────────────────────────────────────────────────────
+
+def _current_role() -> str:
+    user = st.session_state.get("current_user")
+    return user["role"] if user else "viewer"
+
+
+def _auth_headers() -> dict:
+    token = st.session_state.get("access_token")
+    return {"Authorization": f"Bearer {token}"} if token else {}
+
+
+def _try_refresh() -> bool:
+    """Attempt a silent token refresh. Returns True if successful."""
+    rt = st.session_state.get("refresh_token")
+    if not rt:
+        return False
+    try:
+        r = requests.post(f"{BACKEND_URL}/auth/refresh", json={"refresh_token": rt}, timeout=5)
+        if r.status_code == 200:
+            st.session_state["access_token"] = r.json()["access_token"]
+            return True
+    except Exception:
+        pass
+    return False
+
+
+def _logout() -> None:
+    st.session_state["access_token"] = None
+    st.session_state["refresh_token"] = None
+    st.session_state["current_user"]  = None
+
+
+_LOGIN_CSS = """
+<style>
+header[data-testid="stHeader"],
+[data-testid="stSidebar"],
+footer,
+[data-testid="stStatusWidget"],
+button[data-testid="stBaseButton-header"],
+.stDeployButton { display: none !important; }
+</style>
+"""
+
+# ── Palette tokens ────────────────────────────────────────────────────────────
+# bg0  = page background   #0d1117
+# bg1  = surface / card    #161b22
+# bg2  = raised element    #21262d
+# bdr  = border            #30363d
+# tx0  = primary text      #e6edf3
+# tx1  = secondary text    #8b949e
+# acc  = accent blue       #2563eb / #3b82f6
+# ─────────────────────────────────────────────────────────────────────────────
+
+_APP_CSS = """
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;600;700&display=swap');
+
+* { font-family: 'Volte', 'Volte Rounded', 'Jost', 'Segoe UI', sans-serif !important; }
+[data-testid="stExpandSidebarButton"] span,
+[data-testid="stExpandSidebarButton"] > *,
+[data-testid="stMainMenuButton"] span,
+[data-testid="stMainMenuButton"] > *,
+[data-testid="stIconMaterial"] { font-family: 'Material Symbols Rounded' !important; }
+
+.stApp { background: #e8ecf1; color: #111827; }
+footer { visibility: hidden; }
+
+p, li, span, label, div { color: #111827; }
+
+small, .stCaption p,
+[data-testid="stCaptionContainer"] p,
+[data-testid="stFileUploader"] small,
+[data-testid="stFileUploaderDropzoneInstructions"] p,
+[data-testid="stFileUploaderDropzoneInstructions"] small { color: #374151 !important; font-size: .82rem; }
+
+button[data-testid="stBaseButton-header"] { display: none !important; }
+.stDeployButton, [data-testid="stDeployButton"], button[kind="deployButton"] { display: none !important; }
+h2 a, h3 a, h4 a { display: none !important; }
+
+/* Rolling spinner */
+@keyframes sap-roll { to { transform: rotate(360deg); } }
+[data-testid="stSpinner"] > div {
+    border: 2px solid #d1d5db !important;
+    border-top-color: #1a56db !important;
+    border-radius: 50% !important;
+    width: 22px !important; height: 22px !important;
+    animation: sap-roll 0.65s linear infinite !important;
+}
+[data-testid="stSpinner"] svg { display: none !important; }
+
+.hero {
+    background: linear-gradient(120deg, #1e3a8a 0%, #1a56db 60%, #3b82f6 100%);
+    border-radius: 0px; padding: 1.2rem 1.6rem; color: white; margin-bottom: 1rem;
+    display: flex; align-items: center;
+}
+.hero h2 { margin: 0; font-size: 1.4rem; font-weight: 700; letter-spacing: 0.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: white !important; }
+.hero p  { margin: .3rem 0 0; opacity: .9; font-size: .9rem; color: white !important; }
+
+div[data-testid="stMetric"] {
+    background: #ffffff; border: 1px solid #9ca3af; border-radius: 0px;
+    padding: .5rem .75rem;
+}
+
+.badge-high   { background:#dc2626; color:white; border-radius:0px; padding:2px 8px; font-weight:bold; }
+.badge-medium { background:#d97706; color:white; border-radius:0px; padding:2px 8px; font-weight:bold; }
+.badge-low    { background:#16a34a; color:white; border-radius:0px; padding:2px 8px; font-weight:bold; }
+
+h3, h4 { color: #1e3a8a !important; }
+.streamlit-expanderHeader { color: #1a56db !important; font-weight: 600; }
+
+.stButton > button { border-radius: 0px !important; }
+
+.stTextInput > div > div > input { border-radius: 0px !important; border-color: #9ca3af !important; }
+[data-baseweb="select"] { border-radius: 0px !important; }
+[data-baseweb="select"] > div { border-color: #9ca3af !important; }
+[data-baseweb="input"]  { border-radius: 0px !important; border-color: #9ca3af !important; }
+
+[data-testid="stFileUploader"] { border-radius: 0px !important; }
+[data-testid="stFileUploaderDropzone"] { border: 1.5px solid #9ca3af !important; border-radius: 0px !important; background: #ffffff !important; }
+
+.stTabs [data-baseweb="tab"]     { border-radius: 0px !important; color: #374151 !important; }
+.stTabs [data-baseweb="tab-list"] { border-radius: 0px !important; border-bottom: 2px solid #9ca3af !important; background: #ffffff !important; padding-left: 1.6rem !important; }
+
+.stDataFrame { border-radius: 0px !important; }
+.streamlit-expanderContent { border-radius: 0px !important; }
+
+[data-testid="stAlert"] {
+    border-radius: 0px !important;
+    border-left: 4px solid #1a56db !important;
+    background: #dbeafe !important;
+}
+[data-testid="stAlert"] p { color: #1e3a8a !important; font-weight: 500 !important; }
+
+.block-container { max-width: 1200px; }
+</style>
+"""
+
+
+def _login_gate() -> None:
+    """Block the app until the user authenticates against the backend."""
+    if st.session_state.get("current_user"):
+        return
+
+    # Try silent token refresh on page reload
+    if _try_refresh():
+        try:
+            r = requests.get(f"{BACKEND_URL}/auth/me", headers=_auth_headers(), timeout=5)
+            if r.status_code == 200:
+                st.session_state["current_user"] = r.json()
+                return
+        except Exception:
+            pass
+
+    # ── Render the login page ────────────────────────────────────────────────
+    st.markdown(_LOGIN_CSS, unsafe_allow_html=True)
+
+    _, col, _ = st.columns([1, 1.6, 1])
+    with col:
+        st.title("Student Academic Performance Prediction System")
+        st.caption("Sign in to continue")
+        st.divider()
+
+        username = st.text_input("Username", key="_login_username")
+        password = st.text_input("Password", type="password", key="_login_password")
+
+        error_slot = st.empty()
+
+        if st.button("Sign in", use_container_width=True, type="primary"):
+            if not username or not password:
+                error_slot.error("Please enter both username and password.")
+            else:
+                with st.spinner("Signing in…"):
+                    try:
+                        r = requests.post(
+                            f"{BACKEND_URL}/auth/login",
+                            json={"username": username, "password": password},
+                            timeout=5,
+                        )
+                        if r.status_code == 200:
+                            data = r.json()
+                            st.session_state["access_token"]  = data["access_token"]
+                            st.session_state["refresh_token"] = data["refresh_token"]
+                            st.session_state["current_user"]  = {
+                                "username": data["username"],
+                                "role":     data["role"],
+                            }
+                            st.rerun()
+                        elif r.status_code == 401:
+                            error_slot.error("Incorrect username or password.")
+                        elif r.status_code == 403:
+                            error_slot.error("This account has been disabled. Contact your administrator.")
+                        else:
+                            error_slot.error(f"Login failed (status {r.status_code}). Try again.")
+                    except requests.exceptions.ConnectionError:
+                        error_slot.error(
+                            f"Cannot reach the backend at **{BACKEND_URL}**. "
+                            "Ensure `python run_backend.py` is running."
+                        )
+
+        st.caption("No account? Contact your system administrator.")
+    st.stop()
+
+_login_gate()
+
+# ── Main app styles + hero (only rendered when authenticated) ─────────────────
+st.markdown(_APP_CSS, unsafe_allow_html=True)
+
+_user = st.session_state.get("current_user", {})
+_username = _user.get("username", "")
+_welcome = f"Welcome, {_username.replace('_', ' ').title()}" if _username else ""
+
+st.markdown(f"""
+<div class="hero">
+  <div style="flex:1;">
+    <h2>{APP_TITLE}</h2>
+    <p>{APP_SUBTITLE}</p>
+  </div>
+  <div style="text-align:right; white-space:nowrap; opacity:0.9;">
+    <p style="margin:0; font-size:0.88rem;">{_welcome}</p>
+  </div>
+</div>
+""", unsafe_allow_html=True)
+
+# ──────────────────────────────────────────────────────────────────────────────
+# Sidebar
 # ──────────────────────────────────────────────────────────────────────────────
 with st.sidebar:
+    if st.button("Sign out", use_container_width=True):
+        _logout()
+        st.rerun()
+
+    st.markdown("---")
     st.markdown("### Database Integration")
     db_url = st.text_input(
         "MySQL SQLAlchemy URL",
@@ -735,6 +868,8 @@ with tab_lms:
 # TAB 3 – TRAIN
 # ═══════════════════════════════════════════════════════════════════════════════
 with tab_train:
+    if _current_role() != "admin":
+        st.warning("Training controls are restricted to administrators. You have read-only access to this page.")
     st.markdown("### Train / Retrain Ensemble Models")
     st.info(
         "Upload a labelled training file (must include **Final Outcome** column). "
@@ -744,7 +879,7 @@ with tab_train:
     train_file = st.file_uploader("Upload Training File (CSV / Excel)", type=["csv", "xlsx", "xls"], key="train_file")
     skip_lstm  = st.checkbox("Skip LSTM training (faster — for quick retrain)", value=False)
 
-    if train_file and st.button("Start Training", use_container_width=True):
+    if train_file and _current_role() == "admin" and st.button("Start Training", use_container_width=True):
         suffix = "." + train_file.name.rsplit(".", 1)[-1].lower()
         tmp    = Path(f"_tmp_train_{datetime.now().strftime('%Y%m%d%H%M%S')}{suffix}")
         try:
@@ -769,7 +904,7 @@ with tab_train:
             c4.metric("RF F1",        f"{m.get('f1', 0):.1%}")
 
             if m.get("auc"):
-                st.caption(f"RF AUC-ROC: {m['auc']:.4f}  ·  Method: {m.get('evaluation_method', '')}")
+                st.caption(f"RF AUC-ROC: {m.get('auc', 0):.4f}  ·  Method: {m.get('evaluation_method', '')}")
 
             st.markdown("**Feature Importance (RF)**")
             fi = rf_res.feature_importance.copy()
@@ -815,7 +950,7 @@ with tab_train:
 
     lms_train_file = st.file_uploader("Upload LMS Training File (CSV)", type=["csv"], key="lms_train_file")
 
-    if lms_train_file and st.button("Start LMS Training", use_container_width=True):
+    if lms_train_file and _current_role() == "admin" and st.button("Start LMS Training", use_container_width=True):
         tmp_lms = Path(f"_tmp_lms_train_{datetime.now().strftime('%Y%m%d%H%M%S')}.csv")
         try:
             tmp_lms.write_bytes(lms_train_file.getbuffer())
@@ -881,17 +1016,35 @@ with tab_explain:
         term_df = st.session_state["term_df"]
         preds   = st.session_state["preds"]
 
+        _EXPLAIN_FNS = {
+            "Random Forest":  explain_student,
+            "XGBoost":        explain_student_xgboost,
+            "LSTM":           explain_student_lstm,
+            "Ensemble (avg)": explain_student_ensemble,
+        }
+
+        selected_model = st.radio(
+            "Model",
+            list(_EXPLAIN_FNS.keys()),
+            horizontal=True,
+            help="LSTM and Ensemble use KernelExplainer and may take longer to compute.",
+        )
+
         # Global importance
         st.markdown("#### Global Feature Importance")
-        with st.spinner("Computing SHAP values…"):
-            fig_global = plot_global_importance(term_df)
+        lstm_note = " *(capped at 100 rows for speed)*" if selected_model in ("LSTM", "Ensemble (avg)") else ""
+        with st.spinner(f"Computing SHAP values for {selected_model}…{lstm_note}"):
+            fig_global = plot_global_importance(
+                term_df,
+                model=selected_model.replace(" (avg)", ""),
+            )
 
         if fig_global:
             st.pyplot(fig_global)
             import matplotlib.pyplot as plt
             plt.close(fig_global)
         else:
-            st.warning("Could not compute global SHAP values. Ensure the model is trained.")
+            st.warning(f"Could not compute SHAP values for {selected_model}. Ensure the model is trained.")
 
         st.markdown("---")
 
@@ -908,7 +1061,9 @@ with tab_explain:
             row_idx  = term_df.index[term_df["Student ID"].astype(str) == sel_id].tolist()
 
             if row_idx:
-                sv = explain_student(term_df, row_idx[0])
+                explain_fn = _EXPLAIN_FNS[selected_model]
+                with st.spinner(f"Computing {selected_model} SHAP for this student…"):
+                    sv = explain_fn(term_df, row_idx[0])
                 if sv:
                     prow = preds[preds["Student ID"].astype(str) == sel_id].iloc[0]
                     st.markdown(
@@ -927,6 +1082,8 @@ with tab_explain:
                             .sort_values("SHAP Value", key=abs, ascending=False),
                             use_container_width=False,
                         )
+                else:
+                    st.warning(f"Could not compute {selected_model} SHAP for this student. Ensure the model is trained.")
             else:
                 st.warning(f"No term data found for student {sel_id}.")
 
@@ -936,7 +1093,9 @@ with tab_explain:
 with tab_db:
     st.markdown("### MySQL Database Records")
 
-    if not st.session_state.get("db_url", "").strip():
+    if _current_role() == "viewer":
+        st.warning("Database access is not available for your role.")
+    elif not st.session_state.get("db_url", "").strip():
         st.info("Add a MySQL URL in the sidebar to use database features.")
     else:
         try:

@@ -14,6 +14,7 @@ from sklearn.metrics import (
     roc_auc_score,
 )
 from sklearn.model_selection import StratifiedKFold, cross_val_predict
+from sklearn.utils.class_weight import compute_sample_weight
 
 warnings.filterwarnings("ignore")
 
@@ -130,11 +131,14 @@ def train_lms_rf(df: pd.DataFrame) -> dict:
     x, y = build_lms_xy(df)
 
     model = RandomForestClassifier(
-        n_estimators=300,
-        max_depth=12,
-        min_samples_split=4,
-        class_weight="balanced",
+        n_estimators=500,
+        max_depth=None,
+        min_samples_split=5,
+        min_samples_leaf=2,
+        max_features="sqrt",
+        class_weight="balanced_subsample",
         random_state=42,
+        n_jobs=-1,
     )
 
     cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
@@ -167,16 +171,16 @@ def train_lms_xgboost(df: pd.DataFrame) -> dict:
 
     x, y = build_lms_xy(df)
 
-    n_fail = int((y == 0).sum())
-    n_pass = int((y == 1).sum())
-    weight_map = {0: 1.0, 1: n_fail / max(n_pass, 1)}
-    sample_weights = y.map(weight_map).values
+    sample_weights = compute_sample_weight("balanced", y)
 
     model = GradientBoostingClassifier(
-        n_estimators=200,
-        learning_rate=0.05,
-        max_depth=6,
-        min_samples_split=4,
+        n_estimators=300,
+        learning_rate=0.03,
+        max_depth=4,
+        min_samples_split=5,
+        min_samples_leaf=3,
+        subsample=0.8,
+        max_features="sqrt",
         random_state=42,
     )
 
@@ -198,7 +202,8 @@ def train_lms_xgboost(df: pd.DataFrame) -> dict:
         "n_samples":         int(len(y)),
     }
 
-    model.fit(x, y, sample_weight=sample_weights)
+    full_weights = compute_sample_weight("balanced", y)
+    model.fit(x, y, sample_weight=full_weights)
     joblib.dump(model, MODEL_DIR / "lms_xgb_model.joblib")
     return metrics
 

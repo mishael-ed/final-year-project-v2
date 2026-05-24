@@ -29,6 +29,13 @@ RF_FEATURES = [
     "attendance_trend",
     "ca_trend",
     "Term Num",
+    # Engineered features
+    "failure_rate",
+    "low_attendance_flag",
+    "low_ca_flag",
+    "prev_ca_pct",
+    "prev_attendance",
+    "ca_x_attendance",
 ]
 
 FEATURE_LABELS = {
@@ -43,6 +50,12 @@ FEATURE_LABELS = {
     "attendance_trend":       "Attendance Trend",
     "ca_trend":               "CA Score Trend",
     "Term Num":               "Term Number",
+    "failure_rate":           "Subject Failure Rate",
+    "low_attendance_flag":    "Low Attendance (<60%)",
+    "low_ca_flag":            "Low CA Score (<60%)",
+    "prev_ca_pct":            "Prev Term CA (%)",
+    "prev_attendance":        "Prev Term Attendance (%)",
+    "ca_x_attendance":        "CA × Attendance (Interaction)",
 }
 
 
@@ -170,6 +183,22 @@ def build_term_features(df: pd.DataFrame) -> pd.DataFrame:
     out["ca_trend"] = out.groupby("Student ID")["avg_ca_pct"].transform(
         lambda s: s - s.iloc[0]
     )
+
+    # Engineered features
+    out["failure_rate"] = out["subject_failure_count"] / out["subject_count"].clip(lower=1)
+    out["low_attendance_flag"] = (out["avg_attendance"] < 60).astype(float)
+    out["low_ca_flag"] = (out["avg_ca_pct"] < 60).astype(float)
+    # Lag features: previous term's CA and attendance (fill first term with own value = no change)
+    out["prev_ca_pct"] = (
+        out.groupby("Student ID")["avg_ca_pct"].shift(1)
+        .fillna(out["avg_ca_pct"])
+    )
+    out["prev_attendance"] = (
+        out.groupby("Student ID")["avg_attendance"].shift(1)
+        .fillna(out["avg_attendance"])
+    )
+    # Interaction: high CA + high attendance = strongly passing; either low = risk
+    out["ca_x_attendance"] = (out["avg_ca_pct"] * out["avg_attendance"]) / 10_000.0
 
     # Forward-shifted label: current-term features → next-term risk
     out["target_next_term_risk"] = out.groupby("Student ID")["at_risk"].shift(-1)
