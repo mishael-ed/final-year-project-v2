@@ -39,6 +39,7 @@ from sap.reporting import export_csv, export_pdf
 # ──────────────────────────────────────────────────────────────────────────────
 st.set_page_config(
     page_title=APP_TITLE,
+    page_icon="favicon.png",
     layout="wide",
     initial_sidebar_state="collapsed",
 )
