@@ -1,0 +1,618 @@
+================================================================================
+  AI-POWERED STUDENT ACADEMIC PERFORMANCE PREDICTOR
+  USER MANUAL
+================================================================================
+  Version : 1.0
+  Date    : May 2026
+================================================================================
+
+
+TABLE OF CONTENTS
+-----------------
+  1.  System Overview
+  2.  Prerequisites
+  3.  Installation
+  4.  First-Time Setup
+  5.  Running the Application
+  6.  Logging In
+  7.  User Management
+       7.1  Creating the First Admin (Command Line)
+       7.2  Creating Additional Users (API)
+       7.3  Creating Users via Swagger UI
+       7.4  User Roles Explained
+       7.5  Updating a User
+       7.6  Disabling / Deleting a User
+  8.  Using the Application
+       8.1  Academic Predict Tab
+       8.2  LMS Predict Tab
+       8.3  Train Models Tab
+       8.4  Explainability (SHAP) Tab
+       8.5  Database Records Tab
+  9.  Sidebar Features
+  10. File Format Reference
+       10.1  Academic Predict CSV
+       10.2  LMS Predict CSV
+       10.3  Training CSV
+  11. Downloading Reports
+  12. Environment Variables (Advanced)
+  13. Troubleshooting
+
+
+================================================================================
+1. SYSTEM OVERVIEW
+================================================================================
+
+This application is an ensemble machine-learning system that predicts student
+academic outcomes and flags at-risk students early. It combines three models:
+Random Forest, XGBoost, and LSTM. Predictions are explained using SHAP values.
+
+The system has two running components:
+  - Backend  : A FastAPI server that handles authentication and user management.
+  - Frontend : A Streamlit web application that staff use to upload data,
+               run predictions, view analytics, and manage the database.
+
+
+================================================================================
+2. PREREQUISITES
+================================================================================
+
+Make sure the following are installed on your machine before proceeding:
+
+  - Python 3.10 or higher   (https://www.python.org/downloads/)
+  - pip (comes with Python)
+
+To verify, open a terminal and run:
+
+    python --version
+    pip --version
+
+
+================================================================================
+3. INSTALLATION
+================================================================================
+
+Step 1 — Open a terminal and navigate to the project folder:
+
+    cd "path\to\FYP 2"
+
+Step 2 — Install all required Python packages:
+
+    pip install -r requirements.txt
+
+Step 3 — Install the backend-specific packages:
+
+    pip install fastapi uvicorn python-jose[cryptography] passlib[bcrypt] python-dotenv
+
+  NOTE: These are not listed in requirements.txt because they are backend-only.
+  If you have already installed them, re-running this command is harmless.
+
+
+================================================================================
+4. FIRST-TIME SETUP
+================================================================================
+
+Before you can log in, the system database must be initialised and at least one
+admin account must be created. Do this only once.
+
+Open a terminal in the project folder and run:
+
+    python create_admin.py
+
+You will be prompted to enter:
+  - Username  : The login name for the admin (e.g. admin)
+  - Email     : The admin's email address
+  - Password  : A secure password (hidden while typing)
+
+Example session:
+  Username: admin
+  Email:    admin@school.edu
+  Password: ********
+
+  Admin user 'admin' created successfully.
+  Role: admin | Email: admin@school.edu
+
+This creates the backend.db SQLite database file and registers the admin user.
+You only need to run this once. Use the API (Section 7.2) for all future users.
+
+
+================================================================================
+5. RUNNING THE APPLICATION
+================================================================================
+
+The backend and frontend must BOTH be running at the same time. Open two
+separate terminal windows in the project folder.
+
+--- Terminal Window 1: Start the Backend ---
+
+    python run_backend.py
+
+  You should see output like:
+    INFO:     Uvicorn running on http://0.0.0.0:8000
+
+  Optional flags:
+    --reload          Enable auto-reload during development
+    --port 9000       Run on a different port (default is 8000)
+
+--- Terminal Window 2: Start the Frontend ---
+
+    streamlit run app.py
+
+  Your browser should open automatically at:
+    http://localhost:8501
+
+  If it does not open automatically, navigate to that URL manually.
+
+  NOTE: Do not close either terminal while using the application.
+
+
+================================================================================
+6. LOGGING IN
+================================================================================
+
+When you open the application in your browser, you will see the login page.
+
+  1. Enter your Username and Password.
+  2. Click "Sign in".
+
+If the credentials are correct, you will be taken to the main application.
+
+Error messages:
+  - "Please enter both username and password."
+      One or both fields were left empty.
+
+  - "Incorrect username or password."
+      The credentials do not match any account in the system.
+
+  - "This account has been disabled. Contact your administrator."
+      The account exists but has been deactivated by an admin.
+
+  - "Cannot reach the backend at http://localhost:8000..."
+      The backend server is not running. Start it as described in Section 5.
+
+Your session stays active for 60 minutes. After that you will be signed out
+automatically. The "Sign out" button is available at the top of the sidebar.
+
+
+================================================================================
+7. USER MANAGEMENT
+================================================================================
+
+Only admin accounts can create, update, or delete users.
+
+
+--- 7.1  CREATING THE FIRST ADMIN (COMMAND LINE) ---
+
+Use create_admin.py as described in Section 4. This is for the very first
+account only. All further accounts should be created via the API.
+
+
+--- 7.2  CREATING ADDITIONAL USERS (API via PowerShell) ---
+
+Make sure the backend is running (Section 5), then open a terminal and run
+the following commands one after another.
+
+Step 1 — Log in to get your access token:
+
+    $login = Invoke-RestMethod -Method Post `
+      -Uri "http://localhost:8000/auth/login" `
+      -ContentType "application/json" `
+      -Body '{"username":"admin","password":"your_password"}'
+
+    $token = $login.access_token
+
+Step 2 — Create the new user:
+
+    Invoke-RestMethod -Method Post `
+      -Uri "http://localhost:8000/users/" `
+      -Headers @{ Authorization = "Bearer $token" } `
+      -ContentType "application/json" `
+      -Body '{"username":"jdoe","email":"jdoe@school.edu","password":"password123","role":"teacher"}'
+
+Replace the values in the Body field with the new user's details.
+
+Available roles: admin, teacher, counselor, viewer
+(See Section 7.4 for what each role can do.)
+
+
+--- 7.3  CREATING USERS VIA SWAGGER UI ---
+
+The Swagger UI provides a browser-based form for managing users without
+needing to type API commands.
+
+  1. Open http://localhost:8000/docs in your browser.
+  2. Click the "Authorize" button (top right of the page).
+  3. In the "value" field type:   Bearer <your_access_token>
+     (Replace <your_access_token> with the token you get from /auth/login.)
+  4. Click "Authorize" then "Close".
+  5. Scroll down to the "users" section.
+  6. Click "POST /users/" then click "Try it out".
+  7. Fill in the request body with the new user's details and click "Execute".
+
+
+--- 7.4  USER ROLES EXPLAINED ---
+
+  admin
+    Full access to all features. Can train models, manage users, access the
+    database tab, and run predictions.
+
+  teacher
+    Can run predictions and view SHAP explanations. Cannot train models
+    or manage other users.
+
+  counselor
+    Same access as teacher. Intended for pastoral staff who need to view
+    risk reports and recommended actions.
+
+  viewer
+    Read-only. Can view predictions but cannot train models or access
+    the database tab.
+
+
+--- 7.5  UPDATING A USER ---
+
+To change a user's email, role, active status, or password, use PATCH.
+First retrieve the user's ID by listing all users:
+
+    $users = Invoke-RestMethod -Method Get `
+      -Uri "http://localhost:8000/users/" `
+      -Headers @{ Authorization = "Bearer $token" }
+
+    $users | Format-Table id, username, role, is_active
+
+Then update the target user (replace 2 with the actual user ID):
+
+    Invoke-RestMethod -Method Patch `
+      -Uri "http://localhost:8000/users/2" `
+      -Headers @{ Authorization = "Bearer $token" } `
+      -ContentType "application/json" `
+      -Body '{"role":"counselor"}'
+
+You can include any combination of: email, role, password, is_active.
+Fields you leave out are not changed.
+
+
+--- 7.6  DISABLING / DELETING A USER ---
+
+To disable a user (prevents login but keeps their record):
+
+    Invoke-RestMethod -Method Patch `
+      -Uri "http://localhost:8000/users/2" `
+      -Headers @{ Authorization = "Bearer $token" } `
+      -ContentType "application/json" `
+      -Body '{"is_active":false}'
+
+To permanently delete a user:
+
+    Invoke-RestMethod -Method Delete `
+      -Uri "http://localhost:8000/users/2" `
+      -Headers @{ Authorization = "Bearer $token" }
+
+NOTE: You cannot delete your own account.
+
+
+================================================================================
+8. USING THE APPLICATION
+================================================================================
+
+After logging in you will see the main application with five tabs across the
+top: Academic Predict, LMS Predict, Train Models, Explainability (SHAP), and
+Database Records.
+
+
+--- 8.1  ACADEMIC PREDICT TAB ---
+
+This is the main prediction tab for traditional student academic records.
+
+STEP 1 — UPLOAD OR ENTER STUDENT RECORDS
+
+  Option A: File Upload
+    1. Click "Browse files" under "Upload File (CSV / Excel)".
+    2. Select your student records file (CSV, XLSX, or XLS).
+    3. Once the file name appears in the uploader, the
+       "Run Predictions from File" button becomes active.
+    4. Click "Run Predictions from File".
+
+  Option B: Manual Entry
+    1. Use the data editor on the right side of the screen.
+    2. The editor is pre-filled with one sample row. Edit it or add more rows
+       using the "+" button at the bottom of the table.
+    3. Click "Run Predictions from Manual Entry".
+
+  See Section 10.1 for the required CSV column format.
+
+STEP 2 — REVIEW RESULTS
+
+  After predictions run, a success banner confirms the number of records
+  processed. The following are then displayed:
+
+  KPI Strip
+    Five summary metrics: Total Students, High Risk, Medium Risk, Low Risk,
+    and Average Pass Likelihood.
+
+  Filters
+    Use the Quick Filter, Class, Term, and Student ID search fields to narrow
+    down the results table.
+
+  Results Table
+    One row per student-term record with columns:
+      Student ID, Student Name, Term, Class, Predicted Outcome (Pass/Fail),
+      Likelihood of Passing (%), Risk Level, CA Progress (%),
+      Overall Score (%), Attendance (%), Subjects at Risk,
+      Main Issue, Recommended Action.
+
+    Risk Level colour coding:
+      RED    = High Risk    (pass probability below 50%)
+      AMBER  = Medium Risk  (pass probability 50% to 74%)
+      GREEN  = Low Risk     (pass probability 75% and above)
+
+STEP 3 — ANALYTICS
+
+  Three visualisations are rendered below the results table:
+    - Risk Distribution Pie Chart
+    - Pass Probability Distribution Histogram
+      (with red 50% and green 75% reference lines)
+    - Attendance vs. CA Score Scatter Plot (coloured by risk tier)
+
+
+--- 8.2  LMS PREDICT TAB ---
+
+This tab predicts student performance based on Learning Management System
+engagement data (login counts, session lengths, submission rates, etc.).
+
+The workflow is the same as the Academic Predict tab:
+  1. Upload a CSV/Excel file or enter data manually.
+  2. Click "Run LMS Predictions from File" or "Run LMS Predictions from
+     Manual Entry".
+  3. Review the KPI strip, colour-coded results table, and analytics charts.
+  4. Download a CSV or PDF report.
+
+See Section 10.2 for the required LMS CSV column format.
+
+
+--- 8.3  TRAIN MODELS TAB ---
+
+ADMIN ONLY. This tab lets administrators retrain the ensemble models using
+their own labelled data.
+
+Training the Academic Models:
+  1. Upload a labelled CSV or Excel file that includes a "Final Outcome" column
+     (values: Pass or Fail).
+  2. Optionally tick "Skip LSTM training (faster)" to skip the LSTM model
+     and speed up the training run.
+  3. Click "Start Training".
+  4. The system trains Random Forest, XGBoost, and (optionally) LSTM in
+     sequence. A spinner is shown during each step.
+  5. On completion, accuracy, precision, recall, and F1-Score are displayed
+     for each model, along with a Feature Importance table.
+
+Training the LMS Models:
+  1. Scroll down to the "Train / Retrain LMS Models" section.
+  2. Upload a labelled CSV file that includes a "pass_fail" column
+     (0 = Fail, 1 = Pass) and the five engagement feature columns.
+  3. Click "Start LMS Training".
+
+Trained models are saved to the ./models/ folder and used immediately for
+all future predictions.
+
+See Section 10.3 for the required training file format.
+
+
+--- 8.4  EXPLAINABILITY (SHAP) TAB ---
+
+This tab explains why the models gave each student their predicted outcome.
+You must run a prediction in the Academic Predict tab first.
+
+Global Feature Importance:
+  A bar chart shows the mean absolute SHAP value for each feature across all
+  students. Features with longer bars have a greater influence on predictions.
+
+  Use the model selector (Random Forest, XGBoost, LSTM, Ensemble) to switch
+  between model-level explanations.
+
+Student-Level Explanation:
+  1. Select a student from the dropdown list.
+  2. A SHAP waterfall chart is generated showing which features pushed that
+     student's pass probability up or down and by how much.
+  3. This helps staff understand exactly why a student was classified as
+     High, Medium, or Low risk.
+
+
+--- 8.5  DATABASE RECORDS TAB ---
+
+This tab is available to admin, teacher, and counselor roles.
+It allows predictions to be run directly from records stored in a MySQL
+database (instead of from a file upload).
+
+  1. First configure the MySQL connection in the sidebar (see Section 9).
+  2. Use the Term and Class dropdowns to filter the records you want.
+  3. Set a row limit using "Max rows".
+  4. Click "Run Predictions from Database".
+
+The same prediction pipeline, results table, and analytics are rendered as in
+the Academic Predict tab.
+
+You can also expand "Preview imported records" to browse raw database records.
+
+
+================================================================================
+9. SIDEBAR FEATURES
+================================================================================
+
+Click the ">" arrow on the left edge of the screen to open the sidebar.
+
+Sign Out
+  Click the "Sign out" button at the top of the sidebar to end your session
+  and return to the login page.
+
+Database Integration
+  MySQL SQLAlchemy URL
+    Enter a connection string in this format:
+      mysql+pymysql://username:password@host:3306/database_name
+
+    Example:
+      mysql+pymysql://root:mypassword@localhost:3306/sap_db
+
+  Auto-save records & prediction runs
+    When ticked, every file upload and prediction run is automatically saved
+    to the connected MySQL database.
+
+  Test Connection
+    Click this to verify that the URL is correct and the database is reachable.
+    A green "Connected" message confirms success. A red error message indicates
+    a problem with the URL or the database server.
+
+
+================================================================================
+10. FILE FORMAT REFERENCE
+================================================================================
+
+--- 10.1  ACADEMIC PREDICT CSV ---
+
+Required columns (column names are case-sensitive):
+
+  Column Name          | Example Value  | Notes
+  ---------------------|----------------|------------------------------------
+  Student ID           | STU_001        | Unique student identifier
+  Student Name         | Jane Doe       | Full name
+  Gender               | Female         | Male / Female
+  Term                 | 2026_T1        | Academic term label
+  Class                | SS2            | Class or year group
+  Subject              | Mathematics    | One row per subject per student
+  CA Score             | 35             | Continuous assessment score
+  CA Total Score       | 40             | Maximum possible CA score
+  Classes Held         | 30             | Total classes scheduled
+  Classes Attended     | 27             | Classes the student attended
+  Behavioral Rating    | Good           | Poor / Average / Good / Excellent
+
+Multiple rows for the same student (one per subject) are automatically
+aggregated into a single student-term record during the prediction pipeline.
+
+
+--- 10.2  LMS PREDICT CSV ---
+
+Required columns:
+
+  Column Name                    | Example Value | Notes
+  -------------------------------|---------------|------------------------------
+  student_id                     | STU_001       | Optional but recommended
+  lms_logins_per_semester        | 57            | Integer count
+  avg_session_duration_minutes   | 49            | Average session length
+  assignment_submission_rate     | 0.76          | Decimal (0-1) or percentage
+  forum_participation_count      | 10            | Integer count
+  video_completion_rate          | 0.75          | Decimal (0-1) or percentage
+
+
+--- 10.3  TRAINING CSV ---
+
+For academic model training, the file must contain all the columns listed in
+Section 10.1 PLUS:
+
+  Column Name     | Example Value | Notes
+  ----------------|---------------|---------------------------------------
+  Final Outcome   | Pass          | Pass or Fail — this is the target label
+
+For LMS model training, the file must contain all the columns listed in
+Section 10.2 PLUS:
+
+  Column Name     | Example Value | Notes
+  ----------------|---------------|---------------------------------------
+  pass_fail       | 1             | 1 = Pass, 0 = Fail
+
+
+================================================================================
+11. DOWNLOADING REPORTS
+================================================================================
+
+After running predictions (Academic or LMS tab), scroll down to the
+"Download Report" section.
+
+  Download CSV
+    Exports the filtered results table as a comma-separated values file.
+    The file name includes a timestamp, e.g. sap_report_20260526_143200.csv
+
+  Download PDF
+    Exports the same results table as a formatted PDF document suitable for
+    printing or submission.
+    The file name includes a timestamp, e.g. sap_report_20260526_143200.pdf
+
+Reports are saved to your browser's default download folder.
+
+
+================================================================================
+12. ENVIRONMENT VARIABLES (ADVANCED)
+================================================================================
+
+The backend reads the following environment variables. You can set them in a
+.env file in the project root folder, or as system environment variables.
+
+  Variable                      | Default                 | Description
+  ------------------------------|-------------------------|----------------------------
+  SECRET_KEY                    | (random on each start)  | JWT signing key. Set this
+                                |                         | to a fixed value so tokens
+                                |                         | survive server restarts.
+  ACCESS_TOKEN_EXPIRE_MINUTES   | 60                      | Login session duration
+  REFRESH_TOKEN_EXPIRE_DAYS     | 7                       | Refresh token lifetime
+  DATABASE_URL                  | sqlite:///./backend.db  | Auth database location
+  CORS_ORIGINS                  | http://localhost:8501   | Allowed frontend origins
+  MYSQL_URL                     | (empty)                 | Pre-fill the sidebar MySQL
+                                |                         | connection URL
+
+Example .env file:
+
+  SECRET_KEY=change_this_to_a_long_random_string
+  ACCESS_TOKEN_EXPIRE_MINUTES=120
+  DATABASE_URL=sqlite:///./backend.db
+  MYSQL_URL=mysql+pymysql://root:password@localhost:3306/sap_db
+
+IMPORTANT: If SECRET_KEY is not set, a new random key is generated every time
+the backend restarts, which will invalidate all existing login sessions.
+
+
+================================================================================
+13. TROUBLESHOOTING
+================================================================================
+
+PROBLEM : The browser shows "Cannot reach the backend at http://localhost:8000"
+SOLUTION: The backend is not running. Open a terminal in the project folder and
+          run:  python run_backend.py
+
+PROBLEM : "Incorrect username or password" but you are sure the password is right
+SOLUTION: Passwords are case-sensitive. If you still cannot log in, reset the
+          password via the API (Section 7.5) or delete and recreate the account.
+
+PROBLEM : The "Start Training" or "Run Predictions from Database" buttons do
+          not appear / are greyed out
+SOLUTION: These controls are restricted to admin accounts. Log in as an admin
+          or ask your system administrator to upgrade your role.
+
+PROBLEM : SHAP charts are not showing / take very long
+SOLUTION: SHAP requires the shap package. Install it with:
+            pip install shap
+          LSTM and Ensemble SHAP use KernelExplainer which is slower by design.
+          It is capped at 100 rows automatically to keep wait times manageable.
+
+PROBLEM : PDF download fails or produces a blank file
+SOLUTION: Ensure the reportlab package is installed:
+            pip install reportlab
+
+PROBLEM : Training fails with a column error
+SOLUTION: Check that your training file contains all required columns including
+          "Final Outcome" (academic) or "pass_fail" (LMS). Column names are
+          case-sensitive. Refer to Section 10 for the full format.
+
+PROBLEM : MySQL connection fails in the sidebar
+SOLUTION: - Verify the connection string format:
+              mysql+pymysql://user:password@host:3306/dbname
+          - Confirm the MySQL server is running and reachable from this machine.
+          - Confirm the database name exists.
+          - Ensure pymysql is installed:  pip install pymysql
+
+PROBLEM : Models folder is missing / prediction returns an error about models
+SOLUTION: The pre-trained model files must be present in the ./models/ folder.
+          If they are missing, go to the Train Models tab and retrain using a
+          labelled dataset (Section 8.3).
+
+
+================================================================================
+  END OF MANUAL
+================================================================================
