@@ -94,7 +94,7 @@ def _try_refresh() -> bool:
     if not rt:
         return False
     try:
-        r = requests.post(f"{BACKEND_URL}/auth/refresh", json={"refresh_token": rt}, timeout=5)
+        r = requests.post(f"{BACKEND_URL}/auth/refresh", json={"refresh_token": rt}, timeout=30)
         if r.status_code == 200:
             st.session_state["access_token"] = r.json()["access_token"]
             return True
@@ -223,7 +223,7 @@ def _login_gate() -> None:
     # Try silent token refresh on page reload
     if _try_refresh():
         try:
-            r = requests.get(f"{BACKEND_URL}/auth/me", headers=_auth_headers(), timeout=5)
+            r = requests.get(f"{BACKEND_URL}/auth/me", headers=_auth_headers(), timeout=30)
             if r.status_code == 200:
                 st.session_state["current_user"] = r.json()
                 return
@@ -253,7 +253,7 @@ def _login_gate() -> None:
                         r = requests.post(
                             f"{BACKEND_URL}/auth/login",
                             json={"username": username, "password": password},
-                            timeout=5,
+                            timeout=30,
                         )
                         if r.status_code == 200:
                             data = r.json()
