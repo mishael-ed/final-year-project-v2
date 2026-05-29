@@ -56,6 +56,7 @@ def _init_state() -> None:
         "term_df": None,
         "lms_preds": None,
         "lms_pred_source": "",
+        "db_preds": None,
         # Auth
         "access_token": None,
         "refresh_token": None,
@@ -450,6 +451,126 @@ def _run_pipeline(raw_df: pd.DataFrame, source: str, save_raw: bool) -> None:
     models_used = preds["prediction_models"].iloc[0] if "prediction_models" in preds.columns else "Ensemble"
     st.success(f"Predictions generated for {len(preds):,} student-term records  ·  {models_used}")
     _maybe_save(raw_df, preds, source, save_raw)
+
+
+# ──────────────────────────────────────────────────────────────────────────────
+# Shared prediction results renderer
+# ──────────────────────────────────────────────────────────────────────────────
+
+def _render_prediction_results(preds: pd.DataFrame, source: str, key_prefix: str = "") -> None:
+    st.caption(f"Source: {source}")
+
+    m1, m2, m3, m4, m5 = st.columns(5)
+    m1.metric("Total Students",      len(preds))
+    m2.metric("High Risk",           int((preds["risk_tier"] == "High").sum()))
+    m3.metric("Medium Risk",         int((preds["risk_tier"] == "Medium").sum()))
+    m4.metric("Low Risk",            int((preds["risk_tier"] == "Low").sum()))
+    m5.metric("Avg Pass Likelihood", f"{preds['pass_probability'].mean() * 100:.1f}%")
+
+    st.markdown("#### Filters")
+    fc1, fc2, fc3, fc4 = st.columns(4)
+    quick        = fc1.selectbox("Quick Filter", ["All", "High Risk Only", "Predicted Fail"], key=f"{key_prefix}quick")
+    class_filter = fc2.multiselect("Class",  sorted(preds["Class"].dropna().unique()), key=f"{key_prefix}class")
+    term_filter  = fc3.multiselect("Term",   sorted(preds["Term"].dropna().unique()),  key=f"{key_prefix}term")
+    sid_filter   = fc4.text_input("Search Student ID", key=f"{key_prefix}sid")
+
+    filt = preds.copy()
+    if quick == "High Risk Only":
+        filt = filt[filt["risk_tier"] == "High"]
+    elif quick == "Predicted Fail":
+        filt = filt[filt["predicted_outcome"] == "Fail"]
+    if class_filter: filt = filt[filt["Class"].isin(class_filter)]
+    if term_filter:  filt = filt[filt["Term"].isin(term_filter)]
+    if sid_filter:   filt = filt[filt["Student ID"].astype(str).str.contains(sid_filter, case=False, na=False)]
+
+    view = _present(filt)
+    st.dataframe(
+        view.style.apply(
+            lambda col: [
+                "background-color:#fee2e2; color:#991b1b" if v == "High"
+                else "background-color:#fef3c7; color:#92400e" if v == "Medium"
+                else "background-color:#d1fae5; color:#065f46" if v == "Low"
+                else ""
+                for v in col
+            ] if col.name == "Risk Level" else [""] * len(col),
+            axis=0,
+        ),
+        use_container_width=True,
+    )
+
+    st.markdown("#### Download Report")
+    report_name = f"sap_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+    csv_path    = export_csv(view, report_name)
+    pdf_path    = export_pdf(view, report_name)
+    dl1, dl2 = st.columns(2)
+    with dl1:
+        with open(csv_path, "rb") as f:
+            st.download_button("Download CSV", data=f.read(), file_name=csv_path.name,
+                               mime="text/csv", use_container_width=True, key=f"{key_prefix}dl_csv")
+    with dl2:
+        with open(pdf_path, "rb") as f:
+            st.download_button("Download PDF", data=f.read(), file_name=pdf_path.name,
+                               mime="application/pdf", use_container_width=True, key=f"{key_prefix}dl_pdf")
+
+    st.markdown("---")
+    st.markdown("### Analytics")
+    try:
+        import matplotlib
+        matplotlib.use("Agg")
+        import matplotlib.pyplot as plt
+
+        vc1, vc2 = st.columns(2)
+        with vc1:
+            st.markdown("#### Risk Distribution")
+            counts     = preds["risk_tier"].value_counts()
+            pie_labels = counts.index.tolist()
+            pie_vals   = counts.values.tolist()
+            pie_colors = ["#e74c3c" if l == "High" else "#e67e22" if l == "Medium" else "#27ae60"
+                          for l in pie_labels]
+            fig_pie, ax_pie = plt.subplots(figsize=(4, 4))
+            ax_pie.pie(pie_vals, labels=pie_labels, colors=pie_colors, autopct="%1.0f%%",
+                       startangle=90, textprops={"color": "#111827", "fontsize": 10})
+            fig_pie.patch.set_facecolor("#f8f9fb")
+            st.pyplot(fig_pie)
+            plt.close(fig_pie)
+
+        with vc2:
+            st.markdown("#### Pass Probability Distribution")
+            fig_hist, ax_hist = plt.subplots(figsize=(4, 4))
+            ax_hist.hist(preds["pass_probability"] * 100, bins=20, color="#1a56db",
+                         edgecolor="#f8f9fb", alpha=0.85)
+            ax_hist.axvline(50, color="#e74c3c", linestyle="--", linewidth=1.5, label="50% threshold")
+            ax_hist.axvline(75, color="#16a34a", linestyle="--", linewidth=1.5, label="75% threshold")
+            ax_hist.set_xlabel("Likelihood of Passing (%)", color="#111827")
+            ax_hist.set_ylabel("No. of Students", color="#111827")
+            ax_hist.tick_params(colors="#111827")
+            ax_hist.spines[:].set_color("#e5e7eb")
+            ax_hist.set_facecolor("#ffffff")
+            fig_hist.patch.set_facecolor("#f8f9fb")
+            ax_hist.legend(facecolor="#ffffff", labelcolor="#111827")
+            st.pyplot(fig_hist)
+            plt.close(fig_hist)
+
+        if "avg_attendance" in preds.columns and "avg_ca_pct" in preds.columns:
+            st.markdown("#### Attendance vs. CA Score (coloured by risk)")
+            risk_cmap = {"High": "#e74c3c", "Medium": "#e67e22", "Low": "#27ae60"}
+            fig_sc, ax_sc = plt.subplots(figsize=(8, 4))
+            for tier, grp in preds.groupby("risk_tier"):
+                ax_sc.scatter(grp["avg_attendance"], grp["avg_ca_pct"],
+                              c=risk_cmap.get(tier, "#7c3aed"), label=tier,
+                              alpha=0.75, edgecolors="none", s=50)
+            ax_sc.set_xlabel("Average Attendance (%)", color="#111827")
+            ax_sc.set_ylabel("Average CA Score (%)",   color="#111827")
+            ax_sc.tick_params(colors="#111827")
+            ax_sc.spines[:].set_color("#e5e7eb")
+            ax_sc.set_facecolor("#ffffff")
+            fig_sc.patch.set_facecolor("#f8f9fb")
+            ax_sc.legend(title="Risk", facecolor="#ffffff", labelcolor="#111827", title_fontsize=9)
+            st.pyplot(fig_sc)
+            plt.close(fig_sc)
+
+    except Exception as e:
+        st.caption(f"Charts unavailable: {e}")
 
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -1131,10 +1252,16 @@ with tab_db:
                     st.warning("No records found for the selected filters.")
                 else:
                     _run_pipeline(db_df, source="mysql", save_raw=False)
+                    st.session_state["db_preds"] = st.session_state["preds"].copy()
 
             with st.expander("Preview imported records"):
                 preview = fetch_imported_records(st.session_state["db_url"], limit=100)
                 st.dataframe(preview, use_container_width=True)
+
+            if st.session_state.get("db_preds") is not None:
+                st.markdown("---")
+                st.markdown("### Prediction Results")
+                _render_prediction_results(st.session_state["db_preds"], "mysql", key_prefix="db_")
 
         except Exception as e:
             st.warning(f"Database section unavailable: {e}")
