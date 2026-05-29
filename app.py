@@ -54,9 +54,10 @@ def _init_state() -> None:
         "preds": None,
         "pred_source": "",
         "term_df": None,
+        "db_preds": None,
+        "db_term_df": None,
         "lms_preds": None,
         "lms_pred_source": "",
-        "pred_origin": "",
         # Auth
         "access_token": None,
         "refresh_token": None,
@@ -435,7 +436,7 @@ def _maybe_save(raw_df: pd.DataFrame | None, preds: pd.DataFrame,
         st.warning(f"MySQL save skipped: {e}")
 
 
-def _run_pipeline(raw_df: pd.DataFrame, source: str, save_raw: bool, origin: str = "academic") -> None:
+def _run_pipeline(raw_df: pd.DataFrame, source: str, save_raw: bool) -> None:
     thresholds = DEFAULT_THRESHOLDS
     prepared   = prepare(raw_df, mode="predict")
     clean      = clean_data(prepared)
@@ -447,11 +448,30 @@ def _run_pipeline(raw_df: pd.DataFrame, source: str, save_raw: bool, origin: str
     st.session_state["preds"]       = preds
     st.session_state["term_df"]     = term_df
     st.session_state["pred_source"] = source
-    st.session_state["pred_origin"] = origin
+    st.session_state["db_preds"]    = None
+    st.session_state["db_term_df"]  = None
 
     models_used = preds["prediction_models"].iloc[0] if "prediction_models" in preds.columns else "Ensemble"
     st.success(f"Predictions generated for {len(preds):,} student-term records  ·  {models_used}")
     _maybe_save(raw_df, preds, source, save_raw)
+
+
+def _run_db_pipeline(raw_df: pd.DataFrame) -> None:
+    thresholds = DEFAULT_THRESHOLDS
+    prepared   = prepare(raw_df, mode="predict")
+    clean      = clean_data(prepared)
+    term_df    = build_term_features(clean)
+    preds      = infer(term_df, thresholds=thresholds)
+    preds      = _add_issue_reason(preds)
+    preds      = _add_intervention(preds)
+
+    st.session_state["db_preds"]   = preds
+    st.session_state["db_term_df"] = term_df
+    st.session_state["preds"]      = None
+    st.session_state["term_df"]    = None
+
+    models_used = preds["prediction_models"].iloc[0] if "prediction_models" in preds.columns else "Ensemble"
+    st.success(f"Predictions generated for {len(preds):,} student-term records  ·  {models_used}")
 
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -650,7 +670,7 @@ with tab_predict:
                     st.caption(f"Detail: {e}")
 
     # ── Results ───────────────────────────────────────────────────────────────
-    if st.session_state["preds"] is not None and st.session_state.get("pred_origin") == "academic":
+    if st.session_state["preds"] is not None:
         preds = st.session_state["preds"]
 
         st.markdown("---")
@@ -1147,11 +1167,11 @@ with tab_explain:
             "The `shap` package is not installed. "
             "Run `pip install shap` to enable explainability features."
         )
-    elif st.session_state["term_df"] is None:
+    elif st.session_state["term_df"] is None and st.session_state["db_term_df"] is None:
         st.info("Run a prediction first (in the **Academic Predict** or **Database Records** tab) to load student data.")
     else:
-        term_df = st.session_state["term_df"]
-        preds   = st.session_state["preds"]
+        term_df = st.session_state["db_term_df"] if st.session_state["term_df"] is None else st.session_state["term_df"]
+        preds   = st.session_state["db_preds"]   if st.session_state["preds"]   is None else st.session_state["preds"]
 
         _EXPLAIN_FNS = {
             "Random Forest":  explain_student,
@@ -1252,16 +1272,16 @@ with tab_db:
                 if db_df.empty:
                     st.warning("No records found for the selected filters.")
                 else:
-                    _run_pipeline(db_df, source="mysql", save_raw=False, origin="database")
+                    _run_db_pipeline(db_df)
 
             with st.expander("Preview imported records"):
                 preview = fetch_imported_records(st.session_state["db_url"], limit=100)
                 st.dataframe(preview, use_container_width=True)
 
-            if st.session_state["preds"] is not None and st.session_state.get("pred_origin") == "database":
+            if st.session_state["db_preds"] is not None:
                 st.markdown("---")
                 st.markdown("### Prediction Results")
-                _render_prediction_results(st.session_state["preds"], "mysql", key_prefix="dbr_")
+                _render_prediction_results(st.session_state["db_preds"], "mysql", key_prefix="dbr_")
 
         except Exception as e:
             st.warning(f"Database section unavailable: {e}")
