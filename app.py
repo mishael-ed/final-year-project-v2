@@ -1261,7 +1261,7 @@ with tab_db:
             if st.session_state.get("db_preds") is not None:
                 st.markdown("---")
                 st.markdown("### Prediction Results")
-                _render_prediction_results(st.session_state["db_preds"], "mysql", key_prefix="db_")
+                _render_prediction_results(st.session_state["db_preds"], "mysql", key_prefix="dbr_")
 
         except Exception as e:
             st.warning(f"Database section unavailable: {e}")
