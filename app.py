@@ -117,6 +117,12 @@ footer,
 [data-testid="stStatusWidget"],
 button[data-testid="stBaseButton-header"],
 .stDeployButton { display: none !important; }
+
+/* Prevent Streamlit rerun grey-out */
+[data-stale], [data-stale="true"] { opacity: 1 !important; }
+
+/* Prevent iOS zoom on input focus (font-size must be >= 16px) */
+input, textarea, select { font-size: 16px !important; }
 </style>
 """
 
@@ -172,8 +178,12 @@ h2 a, h3 a, h4 a { display: none !important; }
     border-radius: 0px; padding: 1.2rem 1.6rem; color: white; margin-bottom: 1rem;
     display: flex; align-items: center;
 }
-.hero h2 { margin: 0; font-size: 1.4rem; font-weight: 700; letter-spacing: 0.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: white !important; }
+.hero h2 { margin: 0; font-size: clamp(1rem, 3.5vw, 1.4rem); font-weight: 700; letter-spacing: 0.01em; white-space: normal; word-break: break-word; color: white !important; }
 .hero p  { margin: .3rem 0 0; opacity: .9; font-size: .9rem; color: white !important; }
+@media (max-width: 640px) {
+    .hero { flex-direction: column !important; align-items: flex-start !important; gap: .4rem; }
+    .hero > div:last-child { text-align: left !important; }
+}
 
 div[data-testid="stMetric"] {
     background: #ffffff; border: 1px solid #9ca3af; border-radius: 0px;
@@ -189,10 +199,14 @@ h3, h4 { color: #1e3a8a !important; }
 
 .stButton > button { border-radius: 0px !important; }
 
-.stTextInput > div > div > input { border-radius: 0px !important; border-color: #9ca3af !important; }
+.stTextInput > div > div > input { border-radius: 0px !important; border-color: #9ca3af !important; font-size: 16px !important; }
 [data-baseweb="select"] { border-radius: 0px !important; }
 [data-baseweb="select"] > div { border-color: #9ca3af !important; }
 [data-baseweb="input"]  { border-radius: 0px !important; border-color: #9ca3af !important; }
+[data-baseweb="input"] input { font-size: 16px !important; }
+
+/* Prevent Streamlit rerun grey-out */
+[data-stale], [data-stale="true"] { opacity: 1 !important; }
 
 [data-testid="stFileUploader"] { border-radius: 0px !important; }
 [data-testid="stFileUploaderDropzone"] { border: 1.5px solid #9ca3af !important; border-radius: 0px !important; background: #ffffff !important; }
