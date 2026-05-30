@@ -1,0 +1,11 @@
+student_id,lms_logins_per_semester,avg_session_duration_minutes,assignment_submission_rate,forum_participation_count,video_completion_rate
+STU_L001,85,62,0.95,18,0.92
+STU_L002,72,48,0.88,12,0.85
+STU_L003,68,55,0.82,15,0.78
+STU_L004,45,30,0.60,6,0.55
+STU_L005,38,25,0.55,4,0.50
+STU_L006,42,28,0.58,5,0.48
+STU_L007,12,10,0.20,1,0.18
+STU_L008,8,7,0.15,0,0.12
+STU_L009,5,5,0.10,0,0.08
+STU_L010,91,70,0.98,22,0.96

@@ -516,7 +516,7 @@ def _render_prediction_results(preds: pd.DataFrame, source: str, key_prefix: str
             ] if col.name == "Risk Level" else [""] * len(col),
             axis=0,
         ),
-        use_container_width=True,
+        width='stretch',
     )
 
     st.markdown("#### Download Report")
@@ -646,7 +646,7 @@ with tab_predict:
             "Behavioral Rating": "Good",
         }])
         manual_df = st.data_editor(
-            seed, num_rows="dynamic", use_container_width=True,
+            seed, num_rows="dynamic", width='stretch',
             column_config={
                 "Behavioral Rating": st.column_config.SelectboxColumn(
                     "Behavioral Rating",
@@ -715,7 +715,7 @@ with tab_predict:
                 ] if col.name == "Risk Level" else [""] * len(col),
                 axis=0,
             ),
-            use_container_width=True,
+            width='stretch',
         )
 
         # Downloads
@@ -875,7 +875,7 @@ with tab_lms:
             "video_completion_rate": 0.75,
         }])
         lms_manual_df = st.data_editor(
-            lms_seed, num_rows="dynamic", use_container_width=True,
+            lms_seed, num_rows="dynamic", width='stretch',
             column_config={
                 "lms_logins_per_semester": st.column_config.NumberColumn("LMS Logins", min_value=0, step=1),
                 "avg_session_duration_minutes": st.column_config.NumberColumn("Avg Session (min)", min_value=0, step=1),
@@ -956,7 +956,7 @@ with tab_lms:
                 ] if col.name == "Risk Level" else [""] * len(col),
                 axis=0,
             ),
-            use_container_width=True,
+            width='stretch',
         )
 
         # Downloads
@@ -1066,7 +1066,7 @@ with tab_train:
             st.markdown("**Feature Importance (RF)**")
             fi = rf_res.feature_importance.copy()
             fi["importance %"] = (fi["importance"] * 100).round(2)
-            st.dataframe(fi[["feature", "importance %"]], use_container_width=False)
+            st.dataframe(fi[["feature", "importance %"]])
 
             # XGBoost
             with st.spinner("Training XGBoost…"):
@@ -1138,7 +1138,7 @@ with tab_train:
                 st.markdown("**Feature Importance (LMS RF)**")
                 fi_lms = lms_rf["feature_importance"].copy()
                 fi_lms["importance %"] = (fi_lms["importance"] * 100).round(2)
-                st.dataframe(fi_lms[["feature", "importance %"]], use_container_width=False)
+                st.dataframe(fi_lms[["feature", "importance %"]])
 
                 # XGBoost
                 with st.spinner("Training LMS XGBoost…"):
@@ -1237,7 +1237,6 @@ with tab_explain:
                         st.dataframe(
                             pd.DataFrame(sv.items(), columns=["Feature", "SHAP Value"])
                             .sort_values("SHAP Value", key=abs, ascending=False),
-                            use_container_width=False,
                         )
                 else:
                     st.warning(f"Could not compute {selected_model} SHAP for this student. Ensure the model is trained.")
@@ -1276,7 +1275,7 @@ with tab_db:
 
             with st.expander("Preview imported records"):
                 preview = fetch_imported_records(st.session_state["db_url"], limit=100)
-                st.dataframe(preview, use_container_width=True)
+                st.dataframe(preview, width='stretch')
 
             if st.session_state["db_preds"] is not None:
                 st.markdown("---")
