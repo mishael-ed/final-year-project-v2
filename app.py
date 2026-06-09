@@ -25,7 +25,10 @@ from sap.explainer import (
     explain_student_ensemble,
     explain_student_lstm,
     explain_student_xgboost,
+    get_intervention_recommendation,
+    get_shap_narrative,
     plot_global_importance,
+    plot_shap_summary,
     plot_student_waterfall,
 )
 from sap.features import build_term_features, clean_data
@@ -1187,7 +1190,7 @@ with tab_explain:
             help="LSTM and Ensemble use KernelExplainer and may take longer to compute.",
         )
 
-        # Global importance
+        # Global importance bar chart
         st.markdown("#### Global Feature Importance")
         lstm_note = " *(capped at 100 rows for speed)*" if selected_model in ("LSTM", "Ensemble (avg)") else ""
         with st.spinner(f"Computing SHAP values for {selected_model}…{lstm_note}"):
@@ -1202,6 +1205,26 @@ with tab_explain:
             plt.close(fig_global)
         else:
             st.warning(f"Could not compute SHAP values for {selected_model}. Ensure the model is trained.")
+
+        # SHAP summary plot (beeswarm — shows sign + magnitude per student)
+        if selected_model in ("Random Forest", "XGBoost"):
+            st.markdown("#### SHAP Summary Plot")
+            st.caption(
+                "Each dot is one student. Colour shows the feature value (red = high, blue = low). "
+                "Position on the x-axis shows whether that feature pushed the prediction toward "
+                "**fail** (positive) or **pass** (negative)."
+            )
+            with st.spinner(f"Generating SHAP summary plot for {selected_model}…"):
+                fig_summary = plot_shap_summary(
+                    term_df,
+                    model=selected_model,
+                )
+            if fig_summary:
+                st.pyplot(fig_summary)
+                import matplotlib.pyplot as plt
+                plt.close(fig_summary)
+            else:
+                st.warning("Could not generate summary plot. Ensure the model is trained.")
 
         st.markdown("---")
 
@@ -1223,11 +1246,15 @@ with tab_explain:
                     sv = explain_fn(term_df, row_idx[0])
                 if sv:
                     prow = preds[preds["Student ID"].astype(str) == sel_id].iloc[0]
+                    risk_tier = prow["risk_tier"]
+                    risk_color = {"High": "🔴", "Medium": "🟡", "Low": "🟢"}.get(risk_tier, "⚪")
                     st.markdown(
                         f"**Predicted outcome:** {prow['predicted_outcome']} &nbsp;·&nbsp;"
-                        f"**Risk:** {prow['risk_tier']} &nbsp;·&nbsp;"
+                        f"**Risk:** {risk_color} {risk_tier} &nbsp;·&nbsp;"
                         f"**Pass probability:** {prow['pass_probability']*100:.1f}%"
                     )
+
+                    # Waterfall chart
                     fig_wf = plot_student_waterfall(sv)
                     if fig_wf:
                         st.pyplot(fig_wf)
@@ -1238,6 +1265,19 @@ with tab_explain:
                             pd.DataFrame(sv.items(), columns=["Feature", "SHAP Value"])
                             .sort_values("SHAP Value", key=abs, ascending=False),
                         )
+
+                    # Natural-language narrative (outline section 5.4)
+                    narrative = get_shap_narrative(sv)
+                    if narrative:
+                        st.markdown("**What is driving this prediction?**")
+                        st.markdown(narrative)
+
+                    # SHAP-driven intervention recommendations (outline section 5.4)
+                    if risk_tier in ("High", "Medium"):
+                        recs = get_intervention_recommendation(sv)
+                        st.markdown("**Recommended interventions:**")
+                        for rec in recs:
+                            st.markdown(f"- {rec}")
                 else:
                     st.warning(f"Could not compute {selected_model} SHAP for this student. Ensure the model is trained.")
             else:

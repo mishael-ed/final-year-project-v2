@@ -19,6 +19,7 @@ try:
 except ImportError:
     SHAP_AVAILABLE = False
 
+from .config import INTERVENTION_MESSAGES
 from .features import FEATURE_LABELS, RF_FEATURES
 from .model import load_lstm, load_rf, load_xgboost
 
@@ -241,6 +242,52 @@ def explain_student_ensemble(term_df: pd.DataFrame, student_idx: int) -> Optiona
 
 
 # ──────────────────────────────────────────────────────────────────────────────
+# SHAP narrative & intervention (section 5.4 of research outline)
+# ──────────────────────────────────────────────────────────────────────────────
+
+def get_shap_narrative(shap_values: dict) -> str:
+    """Return a one-sentence natural-language summary of the top 3 SHAP drivers.
+
+    Example: "CA × Attendance increased risk by 34%; Failure Rate increased risk
+    by 18%; Attendance Trend decreased risk by 9%."
+    """
+    if not shap_values:
+        return ""
+    total_abs = sum(abs(v) for v in shap_values.values())
+    if total_abs == 0:
+        return ""
+    sorted_items = sorted(shap_values.items(), key=lambda kv: abs(kv[1]), reverse=True)[:3]
+    parts = []
+    for feat, val in sorted_items:
+        pct = abs(val) / total_abs * 100
+        direction = "increased" if val > 0 else "decreased"
+        parts.append(f"**{feat}** {direction} risk by {pct:.0f}%")
+    return "; ".join(parts) + "."
+
+
+def get_intervention_recommendation(shap_values: dict) -> list[str]:
+    """Return up to 3 SHAP-driven intervention messages for at-risk features.
+
+    Only features with positive SHAP values (pushing toward fail) are considered.
+    Messages are drawn from INTERVENTION_MESSAGES keyed by display feature label.
+    """
+    if not shap_values:
+        return [INTERVENTION_MESSAGES["No major risk"]]
+    at_risk = {k: v for k, v in shap_values.items() if v > 0}
+    if not at_risk:
+        return [INTERVENTION_MESSAGES["No major risk"]]
+    top = sorted(at_risk.items(), key=lambda kv: kv[1], reverse=True)[:3]
+    recs = []
+    for feat, _ in top:
+        msg = INTERVENTION_MESSAGES.get(feat)
+        if msg and msg not in recs:
+            recs.append(msg)
+    if not recs:
+        recs.append(INTERVENTION_MESSAGES["No major risk"])
+    return recs
+
+
+# ──────────────────────────────────────────────────────────────────────────────
 # Matplotlib figures
 # ──────────────────────────────────────────────────────────────────────────────
 
@@ -281,6 +328,61 @@ def plot_global_importance(term_df: pd.DataFrame, model: str = "RF"):
         imp = get_feature_importance_shap(term_df)
         title = "Global Feature Importance — Random Forest (SHAP)"
     return _bar_figure(imp, title)
+
+
+def plot_shap_summary(term_df: pd.DataFrame, model: str = "RF"):
+    """SHAP summary plot (beeswarm-style dot plot showing sign + magnitude).
+
+    Uses shap.summary_plot with show=False so the figure can be passed to
+    st.pyplot without opening a window.  Only RF and XGBoost are supported
+    (TreeExplainer); LSTM is too slow for a summary plot over all rows.
+    """
+    if not SHAP_AVAILABLE:
+        return None
+    try:
+        import matplotlib
+        matplotlib.use("Agg")
+        import matplotlib.pyplot as plt
+    except ImportError:
+        return None
+
+    try:
+        if model == "XGBoost":
+            clf = load_xgboost()
+            if clf is None:
+                return None
+        else:
+            clf = load_rf()
+    except Exception:
+        return None
+
+    x = term_df[RF_FEATURES].copy()
+    labeled_cols = [FEATURE_LABELS.get(f, f) for f in RF_FEATURES]
+
+    explainer = shap.TreeExplainer(clf)
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        sv = explainer.shap_values(x)
+
+    if isinstance(sv, list):
+        sv_fail = sv[1]
+    elif isinstance(sv, np.ndarray) and sv.ndim == 3:
+        sv_fail = sv[:, :, 1]
+    else:
+        sv_fail = sv
+
+    plt.figure()
+    shap.summary_plot(
+        sv_fail,
+        x.values,
+        feature_names=labeled_cols,
+        show=False,
+        plot_size=None,
+    )
+    fig = plt.gcf()
+    fig.set_size_inches(8, 5)
+    fig.tight_layout()
+    return fig
 
 
 def plot_student_waterfall(shap_values: dict, base_value: float = 0.5):
